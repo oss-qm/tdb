@@ -1,10 +1,14 @@
 tdb (1.1.0-1) unstable; urgency=low
 
   * New upstream release.
+  	* Removes spinlock code. (Closes: #400802)
+    * References to tdb_lockkeys() were removed. (Closes: #309994)
+    * Provide tdb_chain(un)lock() functions. (Closes: #412817)
   * New maintainer. (Closes: #411687)
   * Drop dependency on gdbm-dev.
+  * Fix typo in copyright file. (Closes: #337506)
 
- -- Jelmer Vernooij <jelmer@samba.org>  Wed, 02 May 2007 18:50:36 +0200
+ -- Jelmer Vernooij <jelmer@samba.org>  Wed, 02 May 2007 20:02:08 +0200
 
 tdb (1.0.6-13) unstable; urgency=high
 

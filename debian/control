@@ -2,7 +2,7 @@ Source: tdb
 Section: devel
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@samba.org>
-Build-Depends: debhelper (>> 5.0.0), quilt
+Build-Depends: debhelper (>> 5.0.0), quilt (>= 0.40)
 Standards-Version: 3.7.2
 
 Package: libtdb1
@@ -28,7 +28,7 @@ Description: Trivial Database - bundled binaries
  This package contains bundled test and utility binaries
 
 Package: tdb-dev
-Section: devellibs
+Section: libs
 Architecture: any
 Depends: libc6-dev, libtdb1 (= ${Source-Version})
 Description: Trivial Database - development files

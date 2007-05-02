@@ -1,6 +1,4 @@
 #!/usr/bin/make -f
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
 
 CFLAGS = -g -Wall
 
@@ -17,20 +15,16 @@ DESTDIR=$(CURDIR)/debian/tmp
 configure: patch configure-stamp
 configure-stamp:
 	dh_testdir
-	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
-					   --disable-dependency-tracking \
-					   --enable-shared \
-					   --enable-static
+	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr
 	touch configure-stamp
 
-build: configure-stamp build-stamp
+build: configure build-stamp
 build-stamp:
 	dh_testdir
 	$(MAKE)
 	touch build-stamp
 
 clean: clean-patched unpatch
-
 clean-patched:
 	dh_testdir
 	dh_testroot
@@ -46,6 +40,8 @@ install: build
 	$(MAKE) install DESTDIR=$(DESTDIR)
 	mv $(CURDIR)/debian/tmp/usr/bin/tdbbackup \
 		$(CURDIR)/debian/tmp/usr/bin/tdbbackup.tdbtools
+	ln -s libtdb.so.1.1.0 $(DESTDIR)/usr/lib/libtdb.so.1
+	ln -s libtdb.so.1 $(DESTDIR)/usr/lib/libtdb.so
 	dh_install --fail-missing --list-missing --sourcedir=$(DESTDIR)
 
 binary-indep: 
@@ -67,4 +63,4 @@ binary-arch: build install
 	dh_builddeb
 
 binary: binary-arch binary-indep
-.PHONY: build clean binary-indep binary-arch binary install configure patch unpatch
+.PHONY: build clean binary-indep binary-arch binary install configure 
