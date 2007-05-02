@@ -1,0 +1,134 @@
+tdb (1.0.6-13) unstable; urgency=high
+
+  * Closes: #307214: ctrlproxy: FTBFS: /usr/include/tdb.h:150: error:
+    parse error before '*' token
+  * Thanks to Wilmer van der Gaast <lintux@debian.org> for providing
+    the patch to fix the above issue.
+  * Closes: #290211: Improper copyright file
+  * Closes: #262490: tdb_1.0.6-8_mips: FTBFS: opcode not supported on
+    this processor: mips1. Spinlocks are not used on mips.
+
+ -- Marek Habersack <grendel@debian.org>  Wed,  4 May 2005 11:11:22 -0400
+
+tdb (1.0.6-12) unstable; urgency=medium
+
+  * Closes: #305771: libtdb is LGPL, rather than GPL as stated in
+    copyright
+  * Updated the configure file with the correct license information.
+  * The binaries accompanying the library are _mostly_ marked as licensed
+    under the GPL. As the effect, I'm (for now) assumming that those binaries
+    that do not bear the license text are GPL-ed as well.
+  * The sources have been updated from the Samba 3.0.14a release.
+  * Closes: #305867: tdb fails to build on athlon64 running sarge/i386.
+    Thanks to Len Sorensen <lennartsorensen@ruggedcom.com> for noticing that
+    and providing the fix.
+
+ -- Marek Habersack <grendel@debian.org>  Fri, 22 Apr 2005 17:39:20 -0400
+
+tdb (1.0.6-11) unstable; urgency=high
+
+  * Added #include <signal.h> in tdb.h, to get the definition of
+    sig_atomic_t (closes: Bug#264601)
+
+ -- Marek Habersack <grendel@debian.org>  Mon,  9 Aug 2004 20:05:36 +0200
+
+tdb (1.0.6-10) unstable; urgency=high
+
+  * tdbbackup is registered with the alternatives system now so that it
+    does not conflict with the Samba package (closes: Bug#262605)
+
+ -- Marek Habersack <grendel@debian.org>  Mon,  2 Aug 2004 01:58:39 +0200
+
+tdb (1.0.6-9) unstable; urgency=high
+
+  * MIPS doesn't want to cooperate on the spinlocks. Disabling it for the
+    architecture (closes: Bug#262490).
+
+ -- Marek Habersack <grendel@debian.org>  Sun,  1 Aug 2004 03:07:55 +0200
+
+tdb (1.0.6-8) unstable; urgency=low
+
+  * Updated the sources to their versions from the samba 3.0.5 package. 
+    The interface is 100% backward compatible.
+  * Updated the Standards Version. No changes.
+  * Enabled spinlocks for architectures that are supported (x86,sparc,
+    mips,powerpc)
+
+ -- Marek Habersack <grendel@debian.org>  Sat, 31 Jul 2004 03:23:39 +0200
+
+tdb (1.0.6-7) unstable; urgency=high
+
+  * Updated the libtool version (closes: Bug#201928)
+
+ -- Marek Habersack <grendel@debian.org>  Fri, 18 Jul 2003 14:24:00 -0400
+
+tdb (1.0.6-6) unstable; urgency=high
+
+  * Bumped the standards version
+  * Depends on debconf > 4.0
+  * Fixed the build-time dependencies. Correctly depends on libgdbm-dev
+    instead of on libgdbm1-dev (closes: Bug#199608)
+
+ -- Marek Habersack <grendel@debian.org>  Tue,  1 Jul 2003 18:16:09 -0400
+
+tdb (1.0.6-5) unstable; urgency=low
+
+  * Modified tdbtool.c to properly use multi-line strings
+    (closes: Bug#195257)
+  * Corrected the copyright file to not use the boilerplate.
+
+ -- Marek Habersack <grendel@debian.org>  Thu, 29 May 2003 15:25:54 -0400
+
+tdb (1.0.6-4) unstable; urgency=high
+
+  * made dependencies right for tdb-dev (closes: #143517)
+
+ -- Marek Habersack <grendel@debian.org>  Thu, 18 Apr 2002 23:55:53 +0200
+
+tdb (1.0.6-3) unstable; urgency=high
+
+  * Added the shared library module. It is needed for some packages on hppa.
+
+ -- Marek Habersack <grendel@debian.org>  Mon, 15 Apr 2002 19:28:09 +0200
+
+tdb (1.0.6-2) unstable; urgency=high
+
+  * Upgraded the config.guess and config.sub files (closes: #138609)
+
+ -- Marek Habersack <grendel@debian.org>  Sun, 17 Mar 2002 00:35:25 +0100
+
+tdb (1.0.6-1) unstable; urgency=medium
+
+  * Latest upstream (closes: #137972)
+
+ -- Marek Habersack <grendel@debian.org>  Wed, 13 Mar 2002 02:43:47 +0100
+
+tdb (1.0.3-4) unstable; urgency=low
+
+  * Updated config.guess and config.sub (closes: #103348)
+  * Binaries in tdb-tools no longer are linked against the shared 
+    tdb library (closes: #102498)
+
+ -- Marek Habersack <grendel@debian.org>  Wed,  4 Jul 2001 11:48:34 +0200
+
+tdb (1.0.3-3) unstable; urgency=low
+
+  * Fixed incorrect dependency on tdb1
+
+ -- Marek Habersack <grendel@debian.org>  Thu, 17 May 2001 13:21:11 +0200
+
+tdb (1.0.3-2) unstable; urgency=low
+
+  * Changed the package description. Closes: #97636
+
+ -- Marek Habersack <grendel@debian.org>  Wed, 16 May 2001 10:47:10 +0200
+
+tdb (1.0.3-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Marek Habersack <grendel@debian.org>  Mon,  7 May 2001 18:03:17 +0200
+
+Local variables:
+mode: debian-changelog
+End:
