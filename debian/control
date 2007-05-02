@@ -2,7 +2,7 @@ Source: tdb
 Section: devel
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@samba.org>
-Build-Depends: debhelper (>> 4.0.0), libgdbm-dev
+Build-Depends: debhelper (>> 4.0.0)
 Standards-Version: 3.6.1
 
 Package: libtdb1
@@ -12,7 +12,7 @@ Depends: ${shlibs:Depends}
 Description: Trivial Database - shared library
  This is a simple database API. It is modelled after the structure
  of GDBM. TDB features, unlike GDBM, multiple writers support with
- appropriate locking.
+ appropriate locking and transactions.
  .
  This package contains the shared library file.
 
@@ -23,7 +23,7 @@ Depends: ${shlibs:Depends}
 Description: Trivial Database - bundled binaries
  This is a simple database API. It is modelled after the structure
  of GDBM. TDB features, unlike GDBM, multiple writers support with
- appropriate locking.
+ appropriate locking and transactions.
  .
  This package contains bundled test and utility binaries
 
@@ -34,6 +34,6 @@ Depends: libc6-dev, libtdb1 (= ${Source-Version})
 Description: Trivial Database - development files
  This is a simple database API. It is modelled after the structure
  of GDBM. TDB features, unlike GDBM, multiple writers support with
- appropriate locking.
+ appropriate locking and transactions.
  .
  This package contains development files

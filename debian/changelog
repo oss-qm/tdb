@@ -1,3 +1,11 @@
+tdb (1.1.0-0ubuntu1) unstable; urgency=low
+
+  * New upstream release.
+  * New maintainer. (Closes: #411687)
+  * Drop dependency on gdbm-dev.
+
+ -- Jelmer Vernooij <jelmer@samba.org>  Wed, 02 May 2007 18:50:36 +0200
+
 tdb (1.0.6-13) unstable; urgency=high
 
   * Closes: #307214: ctrlproxy: FTBFS: /usr/include/tdb.h:150: error:
