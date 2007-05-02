@@ -1,0 +1,67 @@
+diff -ur tdb-1.1.0/Makefile.in tdb-1.1.0-debian/Makefile.in
+--- tdb-1.1.0/Makefile.in	2007-05-02 18:09:33.000000000 +0200
++++ tdb-1.1.0-debian/Makefile.in	2007-05-02 19:45:33.000000000 +0200
+@@ -27,7 +27,10 @@
+ 
+ DIRS = bin common tools
+ 
+-all: showflags dirs $(PROGS)
++SONAME = libtdb.so.1.0.0
++SOLIB = libtdb.so.@PACKAGE_VERSION@
++
++all: showflags dirs $(PROGS) $(SOLIB)
+ 
+ showflags:
+ 	@echo 'tdb will be compiled with flags:'
+@@ -36,11 +39,18 @@
+ 	@echo '  LDFLAGS = $(LDFLAGS)'
+ 	@echo '  LIBS = $(LIBS)'
+ 
++.SUFFIXES: .c .o .po
++
+ .c.o:
+ 	@echo Compiling $*.c
+ 	@mkdir -p `dirname $@`
+ 	@$(CC) $(CFLAGS) -c $< -o $@
+ 
++.c.po:
++	@echo Compiling $*.c
++	@mkdir -p `dirname $@`
++	@$(CC) -fPIC $(CFLAGS) -c $< -o $@
++
+ dirs:
+ 	@mkdir -p $(DIRS)
+ 
+@@ -52,23 +62,27 @@
+ 	cp $(PROGS) $(DESTDIR)$(bindir)
+ 	cp $(srcdir)/include/tdb.h $(DESTDIR)$(includedir)
+ 	cp tdb.pc $(DESTDIR)$(libdir)/pkgconfig
++	cp libtdb.a $(SOLIB) $(DESTDIR)$(libdir)
+ 
+ libtdb.a: $(TDB_OBJ)
+ 	ar -rv libtdb.a $(TDB_OBJ)
+ 
+-bin/tdbtest$(EXEEXT): tools/tdbtest.o libtdb.a
++$(SOLIB): $(TDB_OBJ:.o=.po)
++	$(CC) -Wl,-soname,$(SONAME) -shared -o $@ $^
++
++bin/tdbtest$(EXEEXT): tools/tdbtest.o $(SOLIB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o bin/tdbtest tools/tdbtest.o -L. -ltdb -lgdbm
+ 
+-bin/tdbtool$(EXEEXT): tools/tdbtool.o libtdb.a
++bin/tdbtool$(EXEEXT): tools/tdbtool.o $(SOLIB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o bin/tdbtool tools/tdbtool.o -L. -ltdb
+ 
+-bin/tdbtorture$(EXEEXT): tools/tdbtorture.o libtdb.a
++bin/tdbtorture$(EXEEXT): tools/tdbtorture.o $(SOLIB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o bin/tdbtorture tools/tdbtorture.o -L. -ltdb
+ 
+-bin/tdbdump$(EXEEXT): tools/tdbdump.o libtdb.a
++bin/tdbdump$(EXEEXT): tools/tdbdump.o $(SOLIB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o bin/tdbdump tools/tdbdump.o -L. -ltdb
+ 
+-bin/tdbbackup$(EXEEXT): tools/tdbbackup.o libtdb.a
++bin/tdbbackup$(EXEEXT): tools/tdbbackup.o $(SOLIB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o bin/tdbbackup tools/tdbbackup.o -L. -ltdb
+ 
+ test: bin/tdbtorture$(EXEEXT)

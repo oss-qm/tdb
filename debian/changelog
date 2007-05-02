@@ -1,4 +1,4 @@
-tdb (1.1.0-0ubuntu1) unstable; urgency=low
+tdb (1.1.0-1) unstable; urgency=low
 
   * New upstream release.
   * New maintainer. (Closes: #411687)

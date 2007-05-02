@@ -2,8 +2,8 @@ Source: tdb
 Section: devel
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@samba.org>
-Build-Depends: debhelper (>> 4.0.0)
-Standards-Version: 3.6.1
+Build-Depends: debhelper (>> 5.0.0), quilt
+Standards-Version: 3.7.2
 
 Package: libtdb1
 Architecture: any
@@ -28,7 +28,7 @@ Description: Trivial Database - bundled binaries
  This package contains bundled test and utility binaries
 
 Package: tdb-dev
-Section: devel
+Section: devellibs
 Architecture: any
 Depends: libc6-dev, libtdb1 (= ${Source-Version})
 Description: Trivial Database - development files
@@ -36,4 +36,4 @@ Description: Trivial Database - development files
  of GDBM. TDB features, unlike GDBM, multiple writers support with
  appropriate locking and transactions.
  .
- This package contains development files
+ This package contains the development files.

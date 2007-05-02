@@ -1,30 +1,26 @@
 #!/usr/bin/make -f
-# Sample debian/rules that uses debhelper.
-# GNU copyright 1997 to 1999 by Joey Hess.
-
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-ifeq ($(DEB_BUILD_ARCH),i386)
-ENABLE_SPINLOCKS=--with-spinlocks --build=i386-pc-linux-gnu
-endif
-ifeq ($(DEB_BUILD_ARCH),powerpc)
-ENABLE_SPINLOCKS=--with-spinlocks
-endif
-ifeq ($(DEB_BUILD_ARCH),sparc)
-ENABLE_SPINLOCKS=--with-spinlocks
+CFLAGS = -g -Wall
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+CFLAGS += -O0
+else
+CFLAGS += -O2
 endif
 
-configure: configure-stamp
+include /usr/share/quilt/quilt.make
+
+DESTDIR=$(CURDIR)/debian/tmp
+
+configure: patch configure-stamp
 configure-stamp:
 	dh_testdir
-	CC=gcc CFLAGS="-O2 -s" ./configure --prefix=/usr \
-	                                   --mandir=\$${prefix}/share/man \
-					   --infodir=\$${prefix}/share/info \
+	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
 					   --disable-dependency-tracking \
 					   --enable-shared \
-					   --enable-static $(ENABLE_SPINLOCKS)
-
+					   --enable-static
 	touch configure-stamp
 
 build: configure-stamp build-stamp
@@ -33,11 +29,12 @@ build-stamp:
 	$(MAKE)
 	touch build-stamp
 
-clean:
+clean: clean-patched unpatch
+
+clean-patched:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
-	# Add here commands to clean up after the build process.
 	-$(MAKE) distclean
 	dh_clean
 
@@ -46,22 +43,17 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-	# Add here commands to install the package into debian/tmp
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
+	$(MAKE) install DESTDIR=$(DESTDIR)
 	mv $(CURDIR)/debian/tmp/usr/bin/tdbbackup \
-	   $(CURDIR)/debian/tmp/usr/bin/tdbbackup.tdbtools
-	dh_movefiles
+		$(CURDIR)/debian/tmp/usr/bin/tdbbackup.tdbtools
+	dh_install --fail-missing --list-missing --sourcedir=$(DESTDIR)
 
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
+binary-indep: 
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_installdocs -ptdb-dev docs/README
-	dh_installman -ptdb-dev
+	dh_installdocs 
+	dh_installman
 	dh_installchangelogs 
 	dh_link
 	dh_strip
@@ -74,5 +66,5 @@ binary-arch: build install
 	dh_md5sums
 	dh_builddeb
 
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure
+binary: binary-arch binary-indep
+.PHONY: build clean binary-indep binary-arch binary install configure patch unpatch
