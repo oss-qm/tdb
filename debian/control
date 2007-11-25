@@ -2,6 +2,7 @@ Source: tdb
 Section: devel
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@samba.org>
+Homepage: http://tdb.samba.org/
 Build-Depends: debhelper (>> 5.0.0), quilt (>= 0.40)
 Standards-Version: 3.7.2
 
