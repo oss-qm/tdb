@@ -2,8 +2,8 @@ Source: tdb
 Section: devel
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@samba.org>
+Build-Depends: debhelper (>> 5.0.0), quilt (>= 0.40), python-support (>= 0.4), python-dev, swig
 Homepage: http://tdb.samba.org/
-Build-Depends: debhelper (>> 5.0.0), quilt (>= 0.40)
 Standards-Version: 3.7.2
 
 Package: libtdb1
@@ -31,10 +31,20 @@ Description: Trivial Database - bundled binaries
 Package: tdb-dev
 Section: libs
 Architecture: any
-Depends: libc6-dev, libtdb1 (= ${Source-Version})
+Depends: libc6-dev, libtdb1 (= ${binary:Version})
 Description: Trivial Database - development files
  This is a simple database API. It is modelled after the structure
  of GDBM. TDB features, unlike GDBM, multiple writers support with
  appropriate locking and transactions.
  .
  This package contains the development files.
+
+Package: python-tdb
+Section: python
+Architecture: any
+Depends: ${python:Depends}, libtdb1 (= ${binary:Version})
+Provides: ${python:Provides}
+Description: Python bindings for TDB
+ TDB is a simple database API. 
+ .
+ This package contains the Python bindings.
