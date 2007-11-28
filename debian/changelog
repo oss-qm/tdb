@@ -1,8 +1,9 @@
-tdb (1.1.1~svn26181-1) UNRELEASED; urgency=low
+tdb (1.1.1~svn26181-1) unstable; urgency=low
 
   * Set homepage field.
   * New upstream snapshot.
   * Add python-tdb package.
+  * Allow Debian Maintainer uploads.
 
  -- Jelmer Vernooij <jelmer@samba.org>  Sun, 25 Nov 2007 16:31:28 +0000
 

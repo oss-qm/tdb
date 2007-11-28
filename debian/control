@@ -5,6 +5,7 @@ Maintainer: Jelmer Vernooij <jelmer@samba.org>
 Build-Depends: debhelper (>> 5.0.0), quilt (>= 0.40), python-support (>= 0.4), python-dev, swig
 Homepage: http://tdb.samba.org/
 Standards-Version: 3.7.2
+XS-DM-Upload-Allowed: yes
 
 Package: libtdb1
 Architecture: any
