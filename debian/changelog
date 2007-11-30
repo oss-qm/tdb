@@ -1,3 +1,9 @@
+tdb (1.1.1~svn26181-2) UNRELEASED; urgency=low
+
+  * Set Vcs-Svn field.
+
+ -- Jelmer Vernooij <jelmer@samba.org>  Fri, 30 Nov 2007 14:06:30 +0000
+
 tdb (1.1.1~svn26181-1) unstable; urgency=low
 
   * Set homepage field.

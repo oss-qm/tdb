@@ -6,6 +6,7 @@ Build-Depends: debhelper (>> 5.0.0), quilt (>= 0.40), python-support (>= 0.4), p
 Homepage: http://tdb.samba.org/
 Standards-Version: 3.7.2
 XS-DM-Upload-Allowed: yes
+Vcs-Svn: svn://svn.debian.org/pkg-samba/trunk/tdb
 
 Package: libtdb1
 Architecture: any
