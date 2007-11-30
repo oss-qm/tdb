@@ -29,7 +29,9 @@ clean-patched:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
-	[ ! -f Makefille ] || $(MAKE) distclean
+	[ ! -f Makefile ] || $(MAKE) distclean
+	./setup.py clean
+	rm -rf build
 	dh_clean
 
 install: build
