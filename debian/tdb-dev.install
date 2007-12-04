@@ -2,3 +2,4 @@ usr/include/*
 usr/lib/pkgconfig/tdb.pc
 usr/lib/lib*.a
 usr/lib/lib*.so
+usr/share/swig*

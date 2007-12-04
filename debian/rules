@@ -39,7 +39,7 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-	$(MAKE) install DESTDIR=$(DESTDIR)
+	$(MAKE) install install-swig DESTDIR=$(DESTDIR)
 	./setup.py install --root=$(DESTDIR)
 	mv $(CURDIR)/debian/tmp/usr/bin/tdbbackup \
 		$(CURDIR)/debian/tmp/usr/bin/tdbbackup.tdbtools

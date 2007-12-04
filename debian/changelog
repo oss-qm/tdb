@@ -1,10 +1,12 @@
-tdb (1.1.1~svn26218-1) UNRELEASED; urgency=low
+tdb (1.1.1~svn26294-1) unstable; urgency=low
 
   * New upstream snapshot.
   * Set Vcs-Svn field.
   * Support building twice in a row. (Closes: #442743)
+  * Install SWIG file.
+  * Upload to unstable.
 
- -- Jelmer Vernooij <jelmer@samba.org>  Fri, 30 Nov 2007 18:28:35 +0100
+ -- Jelmer Vernooij <jelmer@samba.org>  Tue, 04 Dec 2007 19:23:26 +0100
 
 tdb (1.1.1~svn26181-1) unstable; urgency=low
 
