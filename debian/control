@@ -44,7 +44,7 @@ Description: Trivial Database - development files
 Package: python-tdb
 Section: python
 Architecture: any
-Depends: ${python:Depends}, libtdb1 (= ${binary:Version})
+Depends: ${python:Depends}, ${shlibs:Depends}, libtdb1 (= ${binary:Version})
 Provides: ${python:Provides}
 Description: Python bindings for TDB
  TDB is a simple database API. 

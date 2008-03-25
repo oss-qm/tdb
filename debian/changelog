@@ -1,3 +1,16 @@
+tdb (1.1.1~svn26294-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * 10_include_signalh.diff (Closes: #460302).
+    + Include signal.h in tdb.h.
+  * Re-add manpages. (Closes: #439809).
+    + Fix manpage sections.
+    + Escape hyphens as minus signs.
+  * Fix return value in tdb_delete.3. (Closes: #385389).
+  * Add ${shlibs:Depends} on python-tdb package.
+
+ -- Barry deFreese <bddebian@comcast.net>  Sat, 08 Mar 2008 22:34:03 -0500
+
 tdb (1.1.1~svn26294-1) unstable; urgency=low
 
   * New upstream snapshot.
