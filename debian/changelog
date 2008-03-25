@@ -1,8 +1,9 @@
 tdb (1.1.1~svn26294-2) unstable; urgency=low
 
   * Add patch to clear spinlocks if set (and not in use). (Closes: #425716)
+  * Change tdb-dev section to libdevel.
 
- -- Jelmer Vernooij <jelmer@samba.org>  Tue, 25 Mar 2008 21:41:45 +0100
+ -- Jelmer Vernooij <jelmer@samba.org>  Tue, 25 Mar 2008 21:43:50 +0100
 
 tdb (1.1.1~svn26294-1.1) unstable; urgency=low
 

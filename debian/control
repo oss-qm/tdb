@@ -31,7 +31,7 @@ Description: Trivial Database - bundled binaries
  This package contains bundled test and utility binaries
 
 Package: tdb-dev
-Section: libs
+Section: libdevel
 Architecture: any
 Depends: libc6-dev, libtdb1 (= ${binary:Version})
 Description: Trivial Database - development files
