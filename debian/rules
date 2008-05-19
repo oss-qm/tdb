@@ -21,7 +21,7 @@ configure-stamp:
 build: configure build-stamp
 build-stamp:
 	dh_testdir
-	$(MAKE) all build-python
+	$(MAKE) all 
 	touch build-stamp
 
 clean: clean-patched unpatch
@@ -30,9 +30,11 @@ clean-patched:
 	dh_testroot
 	rm -f build-stamp configure-stamp
 	[ ! -f Makefile ] || $(MAKE) distclean
-	./setup.py clean
 	rm -rf build
 	dh_clean
+
+get-orig-source:
+	./debian/build-orig.sh
 
 install: build
 	dh_testdir
@@ -40,7 +42,6 @@ install: build
 	dh_clean -k
 	dh_installdirs
 	$(MAKE) install install-swig DESTDIR=$(DESTDIR)
-	./setup.py install --root=$(DESTDIR)
 	mv $(CURDIR)/debian/tmp/usr/bin/tdbbackup \
 		$(CURDIR)/debian/tmp/usr/bin/tdbbackup.tdbtools
 	ln -s libtdb.so.1.1.1 $(DESTDIR)/usr/lib/libtdb.so.1

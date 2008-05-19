@@ -1,3 +1,9 @@
+tdb (1.1.2~git20080520-1) unstable; urgency=low
+
+  * New upstream snapshot.
+
+ -- Jelmer Vernooij <jelmer@samba.org>  Tue, 20 May 2008 01:52:37 +0200
+
 tdb (1.1.1~svn26294-2) unstable; urgency=low
 
   * Add patch to clear spinlocks if set and opening a TDB in write mode. 

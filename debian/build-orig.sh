@@ -1,18 +1,28 @@
-#!/bin/sh
-# Build a source tarball for tdb
+#!/bin/bash
+REFSPEC=$1
+GIT_URL=$2
+shift 2
 
-samba_repos=svn://svn.samba.org/samba/
-version=$( dpkg-parsechangelog -l`dirname $0`/changelog | sed -n 's/^Version: \(.*:\|\)//p' | sed 's/-[0-9.]\+$//' )
-
-if echo $version | grep svn > /dev/null; then
-	# SVN Snapshot
-	revno=`echo $version | sed 's/^[0-9.]\+~svn//'`
-	svn export -r$revno $samba_repos/branches/SAMBA_4_0/source/lib/tdb tdb-$version
-	svn export -r$revno $samba_repos/branches/SAMBA_4_0/source/lib/replace tdb-$version/libreplace
-else
-	# Release
-	svn export $samba_repos/tags/TDB_`echo $version | sed 's/\./_/g'` tdb-$version
+if [ -z "$GIT_URL" ]; then
+	GIT_URL=git://git.samba.org/samba.git
 fi
 
-cd tdb-$version && ./autogen.sh && cd ..
-tar cvz tdb-$version > tdb_$version.orig.tar.gz
+if [ -z "$REFSPEC" ]; then
+	REFSPEC=origin/v4-0-test
+fi
+
+TDBTMP=$TMPDIR/$RANDOM.tdb.git
+version=$( dpkg-parsechangelog -l`dirname $0`/changelog | sed -n 's/^Version: \(.*:\|\)//p' | sed 's/-[0-9.]\+$//' )
+git clone --depth 1 -l $GIT_URL $TDBTMP
+if [ ! -z "$REFSPEC" ]; then
+	pushd $TDBTMP
+	git checkout $REFSPEC || exit 1
+	popd
+fi
+
+mv $TDBTMP/source/lib/tdb "tdb-$version"
+mv $TDBTMP/source/lib/replace "tdb-$version/libreplace"
+rm -rf $TDBTMP
+pushd "tdb-$version" && ./autogen.sh && popd
+tar cvz "tdb-$version" > "tdb_$version.orig.tar.gz"
+rm -rf "tdb-$version"
