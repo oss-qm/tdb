@@ -44,7 +44,7 @@ install: build
 	$(MAKE) install install-swig DESTDIR=$(DESTDIR)
 	mv $(CURDIR)/debian/tmp/usr/bin/tdbbackup \
 		$(CURDIR)/debian/tmp/usr/bin/tdbbackup.tdbtools
-	ln -s libtdb.so.1.1.1 $(DESTDIR)/usr/lib/libtdb.so.1
+	ln -s libtdb.so.1.1.2 $(DESTDIR)/usr/lib/libtdb.so.1
 	ln -s libtdb.so.1 $(DESTDIR)/usr/lib/libtdb.so
 	dh_install --fail-missing --list-missing --sourcedir=$(DESTDIR)
 

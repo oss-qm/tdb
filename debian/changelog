@@ -1,3 +1,10 @@
+tdb (1.1.2~git20080521-1) unstable; urgency=low
+
+  * New upstream snapshot.
+  * Fix soname symlink. (Closes: #482008, Closes: #482228)
+
+ -- Jelmer Vernooij <jelmer@samba.org>  Wed, 21 May 2008 17:41:28 +0200
+
 tdb (1.1.2~git20080520-1) unstable; urgency=low
 
   * New upstream snapshot.
