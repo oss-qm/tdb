@@ -1,3 +1,10 @@
+tdb (1.1.2~git20080615-1) unstable; urgency=low
+
+  * New upstream snapshot.
+  * Bump standards version to 3.8.0.
+
+ -- Jelmer Vernooij <jelmer@samba.org>  Mon, 16 Jun 2008 00:41:17 +0200
+
 tdb (1.1.2~git20080521-1) unstable; urgency=low
 
   * New upstream snapshot.
