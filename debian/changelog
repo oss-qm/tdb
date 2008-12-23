@@ -1,3 +1,9 @@
+tdb (1.1.2~git20081222-1) unstable; urgency=low
+
+  * New upstream snapshot.
+
+ -- Jelmer Vernooij <jelmer@samba.org>  Mon, 22 Dec 2008 23:59:23 +0100
+
 tdb (1.1.2~git20080615-1) unstable; urgency=low
 
   * New upstream snapshot.

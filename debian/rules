@@ -41,7 +41,7 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-	$(MAKE) install install-swig DESTDIR=$(DESTDIR)
+	$(MAKE) install DESTDIR=$(DESTDIR)
 	mv $(CURDIR)/debian/tmp/usr/bin/tdbbackup \
 		$(CURDIR)/debian/tmp/usr/bin/tdbbackup.tdbtools
 	ln -s libtdb.so.1.1.2 $(DESTDIR)/usr/lib/libtdb.so.1

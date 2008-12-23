@@ -8,7 +8,7 @@ if [ -z "$GIT_URL" ]; then
 fi
 
 if [ -z "$REFSPEC" ]; then
-	REFSPEC=origin/v4-0-test
+	REFSPEC=origin/master
 fi
 
 TDBTMP=$TMPDIR/$RANDOM.tdb.git
@@ -20,8 +20,8 @@ if [ ! -z "$REFSPEC" ]; then
 	popd
 fi
 
-mv $TDBTMP/source/lib/tdb "tdb-$version"
-mv $TDBTMP/source/lib/replace "tdb-$version/libreplace"
+mv $TDBTMP/lib/tdb "tdb-$version"
+mv $TDBTMP/lib/replace "tdb-$version/libreplace"
 rm -rf $TDBTMP
 pushd "tdb-$version" && ./autogen.sh && popd
 tar cvz "tdb-$version" > "tdb_$version.orig.tar.gz"
