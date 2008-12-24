@@ -1,3 +1,9 @@
+tdb (1.1.2~git20081222-2) UNRELEASED; urgency=low
+
+  * Switch to python-central.
+
+ -- Jelmer Vernooij <jelmer@samba.org>  Wed, 24 Dec 2008 01:35:23 +0100
+
 tdb (1.1.2~git20081222-1) unstable; urgency=low
 
   * New upstream snapshot.
