@@ -1,8 +1,9 @@
-tdb (1.1.2~git20081222-2) UNRELEASED; urgency=low
+tdb (1.1.3~git20081222-2) UNRELEASED; urgency=low
 
   * Switch to python-central.
+  * Fix version number. (Closes: #510885)
 
- -- Jelmer Vernooij <jelmer@samba.org>  Wed, 24 Dec 2008 01:35:23 +0100
+ -- Jelmer Vernooij <jelmer@samba.org>  Mon, 12 Jan 2009 02:28:52 +0100
 
 tdb (1.1.2~git20081222-1) unstable; urgency=low
 
