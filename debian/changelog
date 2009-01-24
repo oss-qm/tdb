@@ -4,6 +4,7 @@ tdb (1.1.3~git20081222-2) experimental; urgency=low
   * Add dummy watchfile explaining how to obtain an upstream tarball.
   * Fix version number. (Closes: #510885)
   * Bump shlibs because of newly added tdb_repack() symbol. (Closes: #510886)
+  * Remove use of absolute paths per policy §6.1. (Closes: #510944)
 
  -- Jelmer Vernooij <jelmer@debian.org>  Sun, 25 Jan 2009 00:13:16 +0100
 
