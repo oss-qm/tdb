@@ -1,2 +1,2 @@
-# tdb is maintained in git, and there are currently no upstream tarballs
-# "./debian/rules get-orig-source" will fetch the current snapshot from git
+version=3
+ftp://ftp.samba.org/pub/tdb/tdb-(.+).tar.gz
