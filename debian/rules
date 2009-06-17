@@ -33,9 +33,6 @@ clean-patched:
 	rm -rf build
 	dh_clean
 
-get-orig-source:
-	./debian/build-orig.sh
-
 install: build
 	dh_testdir
 	dh_testroot
