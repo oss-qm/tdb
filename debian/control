@@ -12,6 +12,7 @@ Package: libtdb1
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}
+XB-Python-Version: ${python:Versions}
 Description: Trivial Database - shared library
  This is a simple database API. It is modelled after the structure
  of GDBM. TDB features, unlike GDBM, multiple writers support with
@@ -23,6 +24,7 @@ Package: tdb-tools
 Section: utils
 Architecture: any
 Depends: ${shlibs:Depends}
+XB-Python-Version: ${python:Versions}
 Description: Trivial Database - bundled binaries
  This is a simple database API. It is modelled after the structure
  of GDBM. TDB features, unlike GDBM, multiple writers support with
@@ -34,6 +36,7 @@ Package: tdb-dev
 Section: libdevel
 Architecture: any
 Depends: libc6-dev, libtdb1 (= ${binary:Version})
+XB-Python-Version: ${python:Versions}
 Description: Trivial Database - development files
  This is a simple database API. It is modelled after the structure
  of GDBM. TDB features, unlike GDBM, multiple writers support with
