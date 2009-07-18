@@ -1,3 +1,10 @@
+tdb (1.1.5-2) unstable; urgency=low
+
+  * Provide a symbols file.
+  * Bump standards version to 3.8.2.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Sat, 18 Jul 2009 12:15:43 +0200
+
 tdb (1.1.5-1) unstable; urgency=low
 
   * New upstream release.
