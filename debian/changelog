@@ -3,6 +3,7 @@ tdb (1.1.5-2) unstable; urgency=low
   * Provide a symbols file.
   * Provide deprecated replacement of public tdb_logging_function symbol 
     removed upstream without soname bump. Closes: #511011
+  * Fix use of --as-needed.
   * Bump standards version to 3.8.2.
 
  -- Jelmer Vernooij <jelmer@debian.org>  Sat, 18 Jul 2009 12:15:43 +0200

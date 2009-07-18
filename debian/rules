@@ -1,6 +1,7 @@
 #!/usr/bin/make -f
 
-CFLAGS = -g -Wall -Wl,--as-needed
+CFLAGS = -g -Wall
+SHLD_FLAGS = -shared -Wl,--as-needed
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 CFLAGS += -O0
@@ -21,7 +22,7 @@ configure-stamp:
 build: configure build-stamp
 build-stamp:
 	dh_testdir
-	$(MAKE) all 
+	$(MAKE) all SHLD_FLAGS="$(SHLD_FLAGS)"
 	touch build-stamp
 
 clean: clean-patched unpatch
