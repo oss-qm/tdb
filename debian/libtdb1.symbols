@@ -31,7 +31,7 @@ libtdb.so.1 libtdb1 #MINVER#
  tdb_lockall_read_nonblock@Base 1.1.1~svn26294
  tdb_lockall_unmark@Base 1.1.1~svn26294
  tdb_log_fn@Base 1.1.0
-#MISSING: 1.1.0-1# tdb_logging_function@Base 1.0.6-13
+ tdb_logging_function@Base 1.0.6
  tdb_map_size@Base 1.1.0
  tdb_name@Base 1.1.0
  tdb_nextkey@Base 1.0.6
