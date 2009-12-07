@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@debian.org>
 Build-Depends: debhelper (>> 5.0.0), quilt (>= 0.40), python-central (>= 0.5.6), python-dev
 Homepage: http://tdb.samba.org/
-Standards-Version: 3.8.2
+Standards-Version: 3.8.3
 Vcs-Svn: svn://svn.debian.org/pkg-samba/trunk/tdb
 XS-Python-Version: all
 

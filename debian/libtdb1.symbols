@@ -8,6 +8,7 @@ libtdb.so.1 libtdb1 #MINVER#
  tdb_chainlock_unmark@Base 1.1.1~svn26294
  tdb_chainunlock@Base 1.0.6
  tdb_chainunlock_read@Base 1.0.6
+ tdb_check@Base 1.2.0
  tdb_close@Base 1.0.6
  tdb_delete@Base 1.0.6
  tdb_dump_all@Base 1.0.6
