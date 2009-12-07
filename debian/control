@@ -32,7 +32,10 @@ Description: Trivial Database - bundled binaries
  .
  This package contains bundled test and utility binaries
 
-Package: tdb-dev
+Package: libtdb-dev
+Provides: tdb-dev
+Replaces: tdb-dev (<< 1.2.0-1)
+Conflicts: tdb-dev (<< 1.2.0-1)
 Section: libdevel
 Architecture: any
 Depends: libc6-dev, libtdb1 (= ${binary:Version})
@@ -54,3 +57,11 @@ Description: Python bindings for TDB
  TDB is a simple database API. 
  .
  This package contains the Python bindings.
+
+Package: tdb-dev
+Depends: libtdb-dev
+Architecture: all
+Description: transitional dummy package
+ This is a dummy package to ease transition to new package name.
+ .
+ You can safely remove it after the upgrade.

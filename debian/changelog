@@ -1,3 +1,10 @@
+tdb (1.2.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Rename tdb-dev -> libtdb-dev.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Mon, 07 Dec 2009 22:04:33 +0100
+
 tdb (1.1.5-2) unstable; urgency=low
 
   * Provide a symbols file.
