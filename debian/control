@@ -61,6 +61,7 @@ Description: Python bindings for TDB
 Package: tdb-dev
 Depends: libtdb-dev
 Architecture: all
+XB-Python-Version: ${python:Versions}
 Description: transitional dummy package
  This is a dummy package to ease transition to new package name.
  .
