@@ -7,7 +7,7 @@ set -e
 
 case "$1" in
     configure)
-    update-alternatives --install /usr/bin/tdbbackup tdbbackup /usr/bin/tdbbackup.tdbtools 10
+    update-alternatives --install /usr/bin/tdbbackup tdbbackup /usr/bin/tdbbackup.tdbtools 10 --slave /usr/share/man/man8/tdbbackup.8.gz tdbbackup.8.gz /usr/share/man/man8/tdbbackup.tdbtools.8.gz
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
