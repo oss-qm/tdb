@@ -1,3 +1,43 @@
+tdb (1.2.1-2) unstable; urgency=low
+
+  * Add missing build dependency on xsltproc, docbook-xsl. Closes:
+    #570950
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Mon, 22 Feb 2010 14:28:59 +0100
+
+tdb (1.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+   + Adds manual pages for tdb-tools. Closes: #557819
+  * Use source format 3.
+  * Bump standards version to 3.8.4.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Mon, 22 Feb 2010 03:24:06 +0100
+
+tdb (1.2.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Rename tdb-dev -> libtdb-dev.
+  * Bump standards version to 3.8.3.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Mon, 07 Dec 2009 22:18:51 +0100
+
+tdb (1.1.5-2) unstable; urgency=low
+
+  * Provide a symbols file.
+  * Provide deprecated replacement of public tdb_logging_function symbol 
+    removed upstream without soname bump. Closes: #511011
+  * Fix use of --as-needed.
+  * Bump standards version to 3.8.2.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Sat, 18 Jul 2009 12:15:43 +0200
+
+tdb (1.1.5-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Wed, 17 Jun 2009 16:57:30 +0200
+
 tdb (1.1.4~git20090604-1) experimental; urgency=low
 
   * New upstream snapshot.

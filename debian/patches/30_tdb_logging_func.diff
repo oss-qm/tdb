@@ -1,0 +1,40 @@
+Provide public symbol tdb_logging_function removed upstream without major 
+version change. (bug #511011)
+
+diff -ur tdb-1.1.5/common/open.c tdb-1.1.5-fixed/common/open.c
+--- tdb-1.1.5/common/open.c	2009-05-23 16:37:50.000000000 +0200
++++ tdb-1.1.5-fixed/common/open.c	2009-07-18 12:46:08.000000000 +0200
+@@ -400,6 +400,11 @@
+         tdb->log = *log_ctx;
+ }
+ 
++void tdb_logging_function(struct tdb_context *tdb, tdb_log_func fn)
++{
++	tdb->log.log_fn = fn;
++}
++
+ void *tdb_get_logging_private(struct tdb_context *tdb)
+ {
+ 	return tdb->log.log_private;
+diff -ur tdb-1.1.5/include/tdb.h tdb-1.1.5-fixed/include/tdb.h
+--- tdb-1.1.5/include/tdb.h	2009-05-23 16:37:50.000000000 +0200
++++ tdb-1.1.5-fixed/include/tdb.h	2009-07-18 12:45:57.000000000 +0200
+@@ -99,6 +99,7 @@
+ 
+ int tdb_reopen(struct tdb_context *tdb);
+ int tdb_reopen_all(int parent_longlived);
++__attribute__((deprecated)) void tdb_logging_function(struct tdb_context *tdb, tdb_log_func);
+ void tdb_set_logging_function(struct tdb_context *tdb, const struct tdb_logging_context *log_ctx);
+ enum TDB_ERROR tdb_error(struct tdb_context *tdb);
+ const char *tdb_errorstr(struct tdb_context *tdb);
+diff -ur tdb-1.1.5/tdb.exports tdb-1.1.5-fixed/tdb.exports
+--- tdb-1.1.5/tdb.exports	2009-06-15 23:06:56.000000000 +0200
++++ tdb-1.1.5-fixed/tdb.exports	2009-07-18 13:03:14.000000000 +0200
+@@ -22,6 +22,7 @@
+            tdb_freelist_size;
+            tdb_get_flags;
+            tdb_get_logging_private;
++           tdb_logging_function;
+            tdb_get_seqnum;
+            tdb_hash_size;
+            tdb_increment_seqnum_nonblock;

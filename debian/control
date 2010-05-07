@@ -2,16 +2,17 @@ Source: tdb
 Section: devel
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@debian.org>
-Build-Depends: debhelper (>> 5.0.0), quilt (>= 0.40), python-central (>= 0.5.6), python-dev
+Build-Depends: debhelper (>> 5.0.0), quilt (>= 0.40), python-central (>= 0.5.6), python-dev, xsltproc, docbook-xsl
 Homepage: http://tdb.samba.org/
-Standards-Version: 3.8.1
+Standards-Version: 3.8.4
 Vcs-Svn: svn://svn.debian.org/pkg-samba/trunk/tdb
 XS-Python-Version: all
 
 Package: libtdb1
 Architecture: any
 Section: libs
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+XB-Python-Version: ${python:Versions}
 Description: Trivial Database - shared library
  This is a simple database API. It is modelled after the structure
  of GDBM. TDB features, unlike GDBM, multiple writers support with
@@ -22,7 +23,8 @@ Description: Trivial Database - shared library
 Package: tdb-tools
 Section: utils
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+XB-Python-Version: ${python:Versions}
 Description: Trivial Database - bundled binaries
  This is a simple database API. It is modelled after the structure
  of GDBM. TDB features, unlike GDBM, multiple writers support with
@@ -30,10 +32,14 @@ Description: Trivial Database - bundled binaries
  .
  This package contains bundled test and utility binaries
 
-Package: tdb-dev
+Package: libtdb-dev
+Provides: tdb-dev
+Replaces: tdb-dev (<< 1.2.0-1)
+Conflicts: tdb-dev (<< 1.2.0-1)
 Section: libdevel
 Architecture: any
-Depends: libc6-dev, libtdb1 (= ${binary:Version})
+Depends: libc6-dev, libtdb1 (= ${binary:Version}), ${misc:Depends}
+XB-Python-Version: ${python:Versions}
 Description: Trivial Database - development files
  This is a simple database API. It is modelled after the structure
  of GDBM. TDB features, unlike GDBM, multiple writers support with
@@ -44,10 +50,19 @@ Description: Trivial Database - development files
 Package: python-tdb
 Section: python
 Architecture: any
-Depends: ${python:Depends}, ${shlibs:Depends}, libtdb1 (= ${binary:Version})
+Depends: ${python:Depends}, ${shlibs:Depends}, libtdb1 (= ${binary:Version}), ${misc:Depends}
 Provides: ${python:Provides}
 XB-Python-Version: ${python:Versions}
 Description: Python bindings for TDB
  TDB is a simple database API. 
  .
  This package contains the Python bindings.
+
+Package: tdb-dev
+Depends: libtdb-dev, ${misc:Depends}
+Architecture: all
+XB-Python-Version: ${python:Versions}
+Description: transitional dummy package
+ This is a dummy package to ease transition to new package name.
+ .
+ You can safely remove it after the upgrade.
