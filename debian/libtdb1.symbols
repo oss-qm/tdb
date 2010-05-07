@@ -54,6 +54,7 @@ libtdb.so.1 libtdb1 #MINVER#
  tdb_transaction_prepare_commit@Base 1.1.5
  tdb_transaction_recover@Base 1.1.0
  tdb_transaction_start@Base 1.1.0
+ tdb_transaction_start_nonblock@Base 1.2.2~git20100507-1
  tdb_traverse@Base 1.0.6
  tdb_traverse_read@Base 1.1.0
  tdb_unlockall@Base 1.0.6

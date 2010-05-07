@@ -1,3 +1,9 @@
+tdb (1.2.2~git20100507-1) lucid; urgency=low
+
+  * New upstream snapshot.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Fri, 07 May 2010 19:43:19 +0200
+
 tdb (1.2.1-2) unstable; urgency=low
 
   * Add missing build dependency on xsltproc, docbook-xsl. Closes:
