@@ -15,7 +15,7 @@ configure: configure-stamp
 configure-stamp:
 	dh_testdir
 	./autogen-waf.sh
-	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath
+	PYTHON=`which python` PYTHON_CONFIG=`which python-config` CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath
 	touch configure-stamp
 
 build: configure build-stamp
