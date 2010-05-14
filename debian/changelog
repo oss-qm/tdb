@@ -2,6 +2,9 @@ tdb (1.2.2~git20100507-1) experimental; urgency=low
 
   * New upstream snapshot.
   * Build with standard system python. Closes: #577435
+  * Remove `tdb_transaction_recover` symbol which was also removed upstream. 
+    This symbol was never intended to be public and would have been hard to 
+    use anyway.
 
  -- Jelmer Vernooij <jelmer@debian.org>  Thu, 13 May 2010 18:42:16 +0200
 
