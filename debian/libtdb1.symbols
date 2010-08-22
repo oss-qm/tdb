@@ -1,4 +1,11 @@
 libtdb.so.1 libtdb1 #MINVER#
+ (optional)dummy_snprintf@Base 1.0.0
+ (optional)rep_getpass@Base 1.0.0
+ (optional)rep_strerror_r@Base 1.0.0
+ (optional)rep_strlcat@Base 1.0.0
+ (optional)rep_strlcpy@Base 1.0.0
+ (optional)rep_strptime@Base 1.0.0
+ (optional)replace_dummy@Base 1.0.0
  tdb_add_flags@Base 1.1.2~git20080520
  tdb_append@Base 1.0.6
  tdb_chainlock@Base 1.0.6
