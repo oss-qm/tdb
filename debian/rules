@@ -9,14 +9,13 @@ else
 CFLAGS += -O2
 endif
 
-include /usr/share/quilt/quilt.make
-
 DESTDIR=$(CURDIR)/debian/tmp
 
-configure: patch configure-stamp
+configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr
+	./autogen-waf.sh
+	PYTHON=`which python` PYTHON_CONFIG=`which python-config` CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath
 	touch configure-stamp
 
 build: configure build-stamp
@@ -25,8 +24,7 @@ build-stamp:
 	$(MAKE) all SHLD_FLAGS="$(SHLD_FLAGS)"
 	touch build-stamp
 
-clean: clean-patched unpatch
-clean-patched:
+clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
@@ -40,6 +38,8 @@ install: build
 	dh_clean -k
 	dh_installdirs
 	$(MAKE) install DESTDIR=$(DESTDIR)
+	ar cr libtdb.a bin/default/common/*.o
+	cp libtdb.a $(CURDIR)/debian/tmp/usr/lib
 	mv $(CURDIR)/debian/tmp/usr/bin/tdbbackup \
 		$(CURDIR)/debian/tmp/usr/bin/tdbbackup.tdbtools
 	mv $(CURDIR)/debian/tmp/usr/share/man/man8/tdbbackup.8 \
