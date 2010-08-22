@@ -1,3 +1,11 @@
+tdb (1.2.3~git20100819-1) experimental; urgency=low
+
+  * New upstream snapshot.
+  * Bump standards version to 3.9.1 (no changes).
+  * Switch to bzr.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Sun, 22 Aug 2010 14:21:07 +0200
+
 tdb (1.2.2~git20100507-1) experimental; urgency=low
 
   * New upstream snapshot.

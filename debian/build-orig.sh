@@ -21,7 +21,10 @@ if [ ! -z "$REFSPEC" ]; then
 fi
 
 mv $TDBTMP/lib/tdb "tdb-$version"
-mv $TDBTMP/lib/replace "tdb-$version/libreplace"
+mkdir "tdb-$version/lib"
+mv $TDBTMP/buildtools "tdb-$version/buildtools"
+mv $TDBTMP/lib/replace "tdb-$version/lib/replace"
+ln -sf buildtools/scripts/autogen-waf.sh "tdb-$version/autogen-waf.sh"
 rm -rf $TDBTMP
 pushd "tdb-$version" && ./autogen.sh && popd
 tar cvz "tdb-$version" > "tdb_$version.orig.tar.gz"
