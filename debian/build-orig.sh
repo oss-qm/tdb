@@ -11,7 +11,7 @@ if [ -z "$REFSPEC" ]; then
 	REFSPEC=origin/master
 fi
 
-TDBTMP=$TMPDIR/$RANDOM.tdb.git
+TDBTMP=`mktemp -d`
 version=$( dpkg-parsechangelog -l`dirname $0`/changelog | sed -n 's/^Version: \(.*:\|\)//p' | sed 's/-[0-9.]\+$//' )
 git clone --depth 1 -l $GIT_URL $TDBTMP
 if [ ! -z "$REFSPEC" ]; then

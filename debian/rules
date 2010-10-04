@@ -18,6 +18,9 @@ configure-stamp:
 	PYTHON=`which python` PYTHON_CONFIG=`which python-config` CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath
 	touch configure-stamp
 
+get-orig-source:
+	./debian/build-orig.sh
+
 build: configure build-stamp
 build-stamp:
 	dh_testdir
