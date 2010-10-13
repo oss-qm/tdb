@@ -31,7 +31,7 @@ libtdb.so.1 libtdb1 #MINVER#
  tdb_get_seqnum@Base 1.1.0
  tdb_hash_size@Base 1.1.0
  tdb_increment_seqnum_nonblock@Base 1.1.1~svn26294
- tdb_jenkins_hash@Base 1.2.6~git20101004-1
+ tdb_jenkins_hash@Base 1.2.6~git20101004
  tdb_lockall@Base 1.0.6
  tdb_lockall_mark@Base 1.1.1~svn26294
  tdb_lockall_nonblock@Base 1.1.1~svn26294
