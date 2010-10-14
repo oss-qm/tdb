@@ -1,4 +1,10 @@
-tdb (1.2.3~git20100819-1) UNRELEASED; urgency=low
+tdb (1.2.6~git20101004-1) unstable; urgency=low
+
+  * New upstream snapshot.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Mon, 04 Oct 2010 21:55:48 +0200
+
+tdb (1.2.3~git20100819-1) experimental; urgency=low
 
   * New upstream snapshot.
   * Bump standards version to 3.9.1 (no changes).

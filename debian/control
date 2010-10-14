@@ -5,7 +5,7 @@ Maintainer: Jelmer Vernooij <jelmer@debian.org>
 Build-Depends: debhelper (>> 5.0.0), python-central (>= 0.5.6), python-dev, xsltproc, docbook-xsl
 Homepage: http://tdb.samba.org/
 Standards-Version: 3.9.1
-Vcs-Svn: http://bzr.debian.org/pkg-samba/tdb/unstable
+Vcs-Bzr: http://bzr.debian.org/pkg-samba/tdb/unstable
 XS-Python-Version: all
 
 Package: libtdb1

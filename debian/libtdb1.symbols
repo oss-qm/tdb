@@ -4,7 +4,6 @@ libtdb.so.1 libtdb1 #MINVER#
  (optional)rep_strerror_r@Base 1.0.0
  (optional)rep_strlcat@Base 1.0.0
  (optional)rep_strlcpy@Base 1.0.0
- (optional)rep_strptime@Base 1.0.0
  (optional)replace_dummy@Base 1.0.0
  tdb_add_flags@Base 1.1.2~git20080520
  tdb_append@Base 1.0.6
@@ -32,6 +31,7 @@ libtdb.so.1 libtdb1 #MINVER#
  tdb_get_seqnum@Base 1.1.0
  tdb_hash_size@Base 1.1.0
  tdb_increment_seqnum_nonblock@Base 1.1.1~svn26294
+ tdb_jenkins_hash@Base 1.2.6~git20101004
  tdb_lockall@Base 1.0.6
  tdb_lockall_mark@Base 1.1.1~svn26294
  tdb_lockall_nonblock@Base 1.1.1~svn26294
