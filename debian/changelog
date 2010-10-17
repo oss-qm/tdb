@@ -1,6 +1,6 @@
-tdb (1.2.6~git20101004-1) unstable; urgency=low
+tdb (1.2.7-1) unstable; urgency=low
 
-  * New upstream snapshot.
+  * New upstream release.
 
  -- Jelmer Vernooij <jelmer@debian.org>  Mon, 04 Oct 2010 21:55:48 +0200
 
