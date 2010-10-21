@@ -1,3 +1,10 @@
+tdb (1.2.7+git20101021-1) unstable; urgency=low
+
+  * New upstream snapshot.
+   + Removes use of _PUBLIC_ from tdb.h. Closes: #600898
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Thu, 21 Oct 2010 16:38:46 +0200
+
 tdb (1.2.7-1) unstable; urgency=low
 
   * New upstream release.

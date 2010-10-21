@@ -8,12 +8,12 @@ diff -ur tdb-1.2.2/common/open.c tdb-1.2.2-fixed/common/open.c
          tdb->log = *log_ctx;
  }
  
-+void tdb_logging_function(struct tdb_context *tdb, tdb_log_func fn)
++_PUBLIC_ void tdb_logging_function(struct tdb_context *tdb, tdb_log_func fn)
 +{
 +	tdb->log.log_fn = fn;
 +}
 +
- void *tdb_get_logging_private(struct tdb_context *tdb)
+ _PUBLIC_ void *tdb_get_logging_private(struct tdb_context *tdb)
  {
  	return tdb->log.log_private;
 diff -ur tdb-1.2.2/include/tdb.h tdb-1.2.2-fixed/include/tdb.h
@@ -21,12 +21,12 @@ diff -ur tdb-1.2.2/include/tdb.h tdb-1.2.2-fixed/include/tdb.h
 +++ tdb-1.2.2-fixed/include/tdb.h	2010-05-14 16:22:05.654686898 +0200
 @@ -100,6 +100,7 @@
  
- _PUBLIC_ int tdb_reopen(struct tdb_context *tdb);
- _PUBLIC_ int tdb_reopen_all(int parent_longlived);
-+_PUBLIC_ __attribute__((deprecated)) void tdb_logging_function(struct tdb_context *tdb, tdb_log_func);
- _PUBLIC_ void tdb_set_logging_function(struct tdb_context *tdb, const struct tdb_logging_context *log_ctx);
- _PUBLIC_ enum TDB_ERROR tdb_error(struct tdb_context *tdb);
- _PUBLIC_ const char *tdb_errorstr(struct tdb_context *tdb);
+ int tdb_reopen(struct tdb_context *tdb);
+ int tdb_reopen_all(int parent_longlived);
++__attribute__((deprecated)) void tdb_logging_function(struct tdb_context *tdb, tdb_log_func);
+ void tdb_set_logging_function(struct tdb_context *tdb, const struct tdb_logging_context *log_ctx);
+ enum TDB_ERROR tdb_error(struct tdb_context *tdb);
+ const char *tdb_errorstr(struct tdb_context *tdb);
 diff -ur tdb-1.2.2/tdb.exports tdb-1.2.2-fixed/tdb.exports
 --- tdb-1.2.2/tdb.exports	2010-05-06 01:33:27.000000000 +0200
 +++ tdb-1.2.2-fixed/tdb.exports	2010-05-14 16:21:45.465269063 +0200
