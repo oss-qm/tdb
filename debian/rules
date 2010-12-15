@@ -33,6 +33,8 @@ clean:
 	rm -f build-stamp configure-stamp
 	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -rf build
+	rm -f buildtools/wafsamba/*.pyc
+	rm -rf buildtools/bin/.waf*
 	dh_clean
 
 install: build
