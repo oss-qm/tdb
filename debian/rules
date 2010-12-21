@@ -9,6 +9,8 @@ else
 CFLAGS += -O2
 endif
 
+LDFLAGS += -Wl,--as-needed
+
 DESTDIR=$(CURDIR)/debian/tmp
 
 configure: configure-stamp

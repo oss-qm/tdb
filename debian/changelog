@@ -3,8 +3,10 @@ tdb (1.2.8-1) unstable; urgency=low
   * New upstream release.
    + Introduces symbol versioning.
   * Switch to python-support.
+  * Run testsuite during build.
+  * Link with --as-needed.
 
- -- Jelmer Vernooij <jelmer@debian.org>  Tue, 21 Dec 2010 19:23:10 +0100
+ -- Jelmer Vernooij <jelmer@debian.org>  Tue, 21 Dec 2010 19:30:08 +0100
 
 tdb (1.2.7+git20101021-1) unstable; urgency=low
 
