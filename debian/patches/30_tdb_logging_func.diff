@@ -49,3 +49,15 @@ diff -ur tdb-1.2.2/tdb.signatures tdb-1.2.2-fixed/tdb.signatures
  void tdb_set_max_dead (struct tdb_context *, int);
  int tdb_check (struct tdb_context *, int (*) (TDB_DATA, TDB_DATA, void *), void *);
  TDB_DATA tdb_null;
+=== modified file 'lib/tdb/ABI/tdb-1.2.1.sigs'
+--- tdb/ABI/tdb-1.2.1.sigs	2010-04-18 05:39:59 +0000
++++ tdb/ABI/tdb-1.2.1.sigs	2010-12-21 18:15:57 +0000
+@@ -48,6 +48,7 @@
+ tdb_lockall_read_nonblock: int (struct tdb_context *)
+ tdb_lockall_unmark: int (struct tdb_context *)
+ tdb_log_fn: tdb_log_func (struct tdb_context *)
++tdb_logging_function: void tdb_logging_function(struct tdb_context *, tdb_log_func)
+ tdb_map_size: size_t (struct tdb_context *)
+ tdb_mmap: void (struct tdb_context *)
+ tdb_munmap: int (struct tdb_context *)
+
