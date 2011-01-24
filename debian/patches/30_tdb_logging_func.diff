@@ -27,28 +27,6 @@ diff -ur tdb-1.2.2/include/tdb.h tdb-1.2.2-fixed/include/tdb.h
  void tdb_set_logging_function(struct tdb_context *tdb, const struct tdb_logging_context *log_ctx);
  enum TDB_ERROR tdb_error(struct tdb_context *tdb);
  const char *tdb_errorstr(struct tdb_context *tdb);
-diff -ur tdb-1.2.2/tdb.exports tdb-1.2.2-fixed/tdb.exports
---- tdb-1.2.2/tdb.exports	2010-05-06 01:33:27.000000000 +0200
-+++ tdb-1.2.2-fixed/tdb.exports	2010-05-14 16:21:45.465269063 +0200
-@@ -23,6 +23,7 @@
-            tdb_freelist_size;
-            tdb_get_flags;
-            tdb_get_logging_private;
-+           tdb_logging_function;
-            tdb_get_seqnum;
-            tdb_hash_size;
-            tdb_increment_seqnum_nonblock;
-diff -ur tdb-1.2.2/tdb.signatures tdb-1.2.2-fixed/tdb.signatures
---- tdb-1.2.2/tdb.signatures	2010-05-06 01:33:27.000000000 +0200
-+++ tdb-1.2.2-fixed/tdb.signatures	2010-05-14 16:27:15.437270732 +0200
-@@ -56,6 +56,7 @@
- void tdb_remove_flags (struct tdb_context *, unsigned int);
- void tdb_setalarm_sigptr (struct tdb_context *, volatile sig_atomic_t *);
- void tdb_set_logging_function (struct tdb_context *, const struct tdb_logging_context *);
-+void tdb_logging_function(struct tdb_context *tdb, tdb_log_func);
- void tdb_set_max_dead (struct tdb_context *, int);
- int tdb_check (struct tdb_context *, int (*) (TDB_DATA, TDB_DATA, void *), void *);
- TDB_DATA tdb_null;
 === modified file 'lib/tdb/ABI/tdb-1.2.1.sigs'
 --- tdb/ABI/tdb-1.2.1.sigs	2010-04-18 05:39:59 +0000
 +++ tdb/ABI/tdb-1.2.1.sigs	2010-12-21 18:15:57 +0000

@@ -16,7 +16,6 @@ DESTDIR=$(CURDIR)/debian/tmp
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	./autogen-waf.sh
 	PYTHON=`which python` PYTHON_CONFIG=`which python-config` CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath
 	touch configure-stamp
 
