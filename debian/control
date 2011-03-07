@@ -2,11 +2,11 @@ Source: tdb
 Section: devel
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@debian.org>
-Build-Depends: debhelper (>> 5.0.0), python-support, python-dev, xsltproc, docbook-xsl, docbook-xml
+Build-Depends: debhelper (>> 5.0.0), python-all-dev (>= 2.6.6-3), xsltproc, docbook-xsl, docbook-xml
 Homepage: http://tdb.samba.org/
 Standards-Version: 3.9.1
 Vcs-Bzr: http://bzr.debian.org/pkg-samba/tdb/unstable
-XS-Python-Version: all
+X-Python-Version: >= 2.4
 
 Package: libtdb1
 Architecture: any
@@ -49,7 +49,6 @@ Section: python
 Architecture: any
 Depends: ${python:Depends}, ${shlibs:Depends}, libtdb1 (= ${binary:Version}), ${misc:Depends}
 Provides: ${python:Provides}
-XB-Python-Version: ${python:Versions}
 Description: Python bindings for TDB
  TDB is a simple database API. 
  .

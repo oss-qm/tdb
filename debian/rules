@@ -16,7 +16,7 @@ DESTDIR=$(CURDIR)/debian/tmp
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	PYTHON=`which python` PYTHON_CONFIG=`which python-config` CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath
+	PYTHON=`which python` PYTHON_CONFIG=`which python-config` CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath-install
 	touch configure-stamp
 
 get-orig-source:
@@ -27,7 +27,7 @@ build-stamp:
 	dh_testdir
 	$(MAKE) all SHLD_FLAGS="$(SHLD_FLAGS)"
 ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
-	LD_LIBRARY_PATH=bin/shared $(MAKE) check
+	$(MAKE) check
 endif
 	touch build-stamp
 
@@ -67,7 +67,7 @@ binary-arch: build install
 	dh_compress
 	dh_fixperms
 	dh_makeshlibs -- -c4
-	dh_pysupport
+	dh_python2 -v
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol
