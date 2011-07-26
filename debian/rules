@@ -18,7 +18,7 @@ export PYTHON_CONFIG="$(shell which `pyversions -r`-config)"
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath-install
+	PYTHON="$(PYTHON)" PYTHON_CONFIG="$(PYTHON_CONFIG)" CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath-install
 	touch configure-stamp
 
 get-orig-source:

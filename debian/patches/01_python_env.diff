@@ -1,0 +1,14 @@
+Description: Support PYTHON environment variable to override python to use
+Author: Jelmer Vernooij <jelmer@samba.org>
+Status: Cherry-picked from upstream
+
+--- a/wscript	2011-01-05 03:41:49.000000000 +0100
++++ b/wscript	2011-07-26 20:09:41.786164681 +0200
+@@ -45,6 +45,7 @@
+ 
+     if not conf.env.disable_python:
+         # also disable if we don't have the python libs installed
++        conf.find_program('python', var='PYTHON')
+         conf.check_tool('python')
+         conf.check_python_version((2,4,2))
+         conf.SAMBA_CHECK_PYTHON_HEADERS(mandatory=False)

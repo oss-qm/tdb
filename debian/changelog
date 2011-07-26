@@ -4,8 +4,9 @@ tdb (1.2.9-2) UNRELEASED; urgency=low
   * Bump standards version to 3.9.2.
   * Use --disable-rpath-install only, simplifies testsuite running.
   * Switch to dh_python2. Closes: #617120
+  * Drop transitional package tdb-dev.
 
- -- Jelmer Vernooij <jelmer@debian.org>  Mon, 07 Mar 2011 03:24:33 +0100
+ -- Jelmer Vernooij <jelmer@debian.org>  Tue, 26 Jul 2011 20:33:01 +0200
 
 tdb (1.2.9-1) unstable; urgency=low
 
