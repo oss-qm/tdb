@@ -55,15 +55,18 @@ install: build
 		$(CURDIR)/debian/tmp/usr/share/man/man8/tdbbackup.tdbtools.8
 	dh_install --fail-missing --list-missing --sourcedir=$(DESTDIR)
 
-binary-indep: 
+binary-indep:
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_installdocs 
+	dh_installdocs -p libtdb1 --link-doc=libtdb1-dbg
+	dh_installdocs -p python-tdb --link-doc=python-tdb-dbg
+	dh_installdocs -p libtdb-dev -p tdb-dev
 	dh_installman
 	dh_installchangelogs 
 	dh_link
-	dh_strip
+	dh_strip -p libtdb1 --dbg-package=libtdb1-dbg
+	dh_strip -p python-tdb --dbg-package=python-tdb-dbg
 	dh_compress
 	dh_fixperms
 	dh_makeshlibs -- -c4
