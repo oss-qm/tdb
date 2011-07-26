@@ -15,10 +15,12 @@ DESTDIR=$(CURDIR)/debian/tmp
 export PYTHON="$(shell which `pyversions -r`)"
 export PYTHON_CONFIG="$(shell which `pyversions -r`-config)"
 
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	PYTHON="$(PYTHON)" PYTHON_CONFIG="$(PYTHON_CONFIG)" CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath-install
+	PYTHON="$(PYTHON)" PYTHON_CONFIG="$(PYTHON_CONFIG)" CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath-install --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
 	touch configure-stamp
 
 get-orig-source:
@@ -50,7 +52,7 @@ install: build
 	$(MAKE) install DESTDIR=$(DESTDIR)
 	# Waf should be doing this..
 	ar cr libtdb.a bin/default/common/*.o
-	cp libtdb.a $(CURDIR)/debian/tmp/usr/lib
+	cp libtdb.a $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)
 	mv $(CURDIR)/debian/tmp/usr/bin/tdbbackup \
 		$(CURDIR)/debian/tmp/usr/bin/tdbbackup.tdbtools
 	mv $(CURDIR)/debian/tmp/usr/share/man/man8/tdbbackup.8 \
