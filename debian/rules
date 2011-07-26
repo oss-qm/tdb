@@ -12,11 +12,13 @@ endif
 LDFLAGS += -Wl,--as-needed
 
 DESTDIR=$(CURDIR)/debian/tmp
+export PYTHON="$(shell which `pyversions -r`)"
+export PYTHON_CONFIG="$(shell which `pyversions -r`-config)"
 
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	PYTHON=`which python` PYTHON_CONFIG=`which python-config` CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath-install
+	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath-install
 	touch configure-stamp
 
 get-orig-source:
@@ -44,9 +46,9 @@ clean:
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
 	dh_installdirs
 	$(MAKE) install DESTDIR=$(DESTDIR)
+	# Waf should be doing this..
 	ar cr libtdb.a bin/default/common/*.o
 	cp libtdb.a $(CURDIR)/debian/tmp/usr/lib
 	mv $(CURDIR)/debian/tmp/usr/bin/tdbbackup \
@@ -59,14 +61,13 @@ binary-indep:
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_installdocs -p libtdb1 --link-doc=libtdb1-dbg
-	dh_installdocs -p python-tdb --link-doc=python-tdb-dbg
-	dh_installdocs -p libtdb-dev -p tdb-dev
+	dh_installdocs
 	dh_installman
 	dh_installchangelogs 
 	dh_link
 	dh_strip -p libtdb1 --dbg-package=libtdb1-dbg
 	dh_strip -p python-tdb --dbg-package=python-tdb-dbg
+	dh_strip -p tdb-tools
 	dh_compress
 	dh_fixperms
 	dh_makeshlibs -- -c4
