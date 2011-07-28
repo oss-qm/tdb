@@ -1,3 +1,10 @@
+tdb (1.2.9-3) unstable; urgency=low
+
+  * Upload to unstable.
+  * Use new style debhelper.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Thu, 28 Jul 2011 16:30:26 +0200
+
 tdb (1.2.9-2) experimental; urgency=low
 
   * Add python-tdb-dbg and libtdb1-dbg packages.

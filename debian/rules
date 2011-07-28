@@ -17,68 +17,45 @@ export PYTHON_CONFIG="$(shell which `pyversions -r`-config)"
 
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
-configure: configure-stamp
-configure-stamp:
-	dh_testdir
+%:
+	dh $*
+
+override_dh_auto_configure:
 	PYTHON="$(PYTHON)" PYTHON_CONFIG="$(PYTHON_CONFIG)" CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath-install --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
-	touch configure-stamp
 
 get-orig-source:
 	./debian/build-orig.sh
 
-build: configure build-stamp
-build-stamp:
-	dh_testdir
+override_dh_auto_build:
 	$(MAKE) all SHLD_FLAGS="$(SHLD_FLAGS)"
+
+override_dh_auto_test:
 ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
 	$(MAKE) check
 endif
-	touch build-stamp
 
+override_dh_auto_clean:
 clean:
-	dh_testdir
-	dh_testroot
 	rm -f build-stamp configure-stamp
 	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -rf build
 	rm -f buildtools/wafsamba/*.pyc
 	rm -rf buildtools/bin/.waf*
-	dh_clean
 
-install: build
-	dh_testdir
-	dh_testroot
-	dh_installdirs
+override_dh_auto_install:
 	$(MAKE) install DESTDIR=$(DESTDIR)
 	# Waf should be doing this..
 	ar cr libtdb.a bin/default/common/*.o
-	cp libtdb.a $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)
-	mv $(CURDIR)/debian/tmp/usr/bin/tdbbackup \
-		$(CURDIR)/debian/tmp/usr/bin/tdbbackup.tdbtools
-	mv $(CURDIR)/debian/tmp/usr/share/man/man8/tdbbackup.8 \
-		$(CURDIR)/debian/tmp/usr/share/man/man8/tdbbackup.tdbtools.8
-	dh_install --fail-missing --list-missing --sourcedir=$(DESTDIR)
+	cp libtdb.a $(DESTDIR)/usr/lib/$(DEB_HOST_MULTIARCH)
+	mv $(DESTDIR)/usr/bin/tdbbackup \
+		$(DESTDIR)/usr/bin/tdbbackup.tdbtools
+	mv $(DESTDIR)//usr/share/man/man8/tdbbackup.8 \
+		$(DESTDIR)/usr/share/man/man8/tdbbackup.tdbtools.8
 
-binary-indep:
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installdocs
-	dh_installman
-	dh_installchangelogs
-	dh_link
+override_dh_strip:
 	dh_strip -p libtdb1 --dbg-package=libtdb1-dbg
 	dh_strip -p python-tdb --dbg-package=python-tdb-dbg
 	dh_strip -p tdb-tools
-	dh_compress
-	dh_fixperms
-	dh_makeshlibs -- -c4
-	dh_python2
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
 
-binary: binary-arch binary-indep
-.PHONY: build clean binary-indep binary-arch binary install configure 
+override_dh_makeshlibs:
+	dh_makeshlibs -- -c4
