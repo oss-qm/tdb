@@ -1,3 +1,10 @@
+tdb (1.2.9-4) unstable; urgency=low
+
+  * Explicitly use dh_python2.
+  * Use system Python. Closes: #577435
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Sun, 25 Sep 2011 19:13:08 +0200
+
 tdb (1.2.9-3) unstable; urgency=low
 
   * Upload to unstable.
