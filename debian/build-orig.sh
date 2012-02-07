@@ -13,7 +13,6 @@ else
 fi
 
 pushd $TDBTMP/lib/tdb
-./autogen-waf.sh
 ./configure
 make dist
 popd

@@ -12,7 +12,7 @@ endif
 LDFLAGS += -Wl,--as-needed
 
 DESTDIR=$(CURDIR)/debian/tmp
-export PYTHON="$(shell which `pyversions -d`)"
+export PYTHON=$(shell which `pyversions -d`)
 export PYTHON_CONFIG=$(PYTHON)-config
 
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
@@ -23,7 +23,7 @@ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 override_dh_auto_configure:
 	PYTHON="$(PYTHON)" PYTHON_CONFIG="$(PYTHON_CONFIG)" CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath-install --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
 
-get-orig-source:
+get-packaged-orig-source:
 	./debian/build-orig.sh
 
 override_dh_python2:
