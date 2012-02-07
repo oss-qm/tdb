@@ -42,8 +42,9 @@ clean:
 	rm -f build-stamp configure-stamp
 	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -rf build
-	rm -f buildtools/wafsamba/*.pyc
-	rm -rf buildtools/bin/.waf*
+	rm -f buildtools/wafsamba/*.pyc \
+		  buildtools/wafadmin/*.pyc \
+		  buildtools/wafadmin/Tools/*.pyc
 
 override_dh_auto_install:
 	$(MAKE) install DESTDIR=$(DESTDIR)

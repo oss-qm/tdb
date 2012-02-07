@@ -1,10 +1,22 @@
-Provide public symbol tdb_logging_function removed upstream without major 
-version change. (bug #511011)
+Author: Jelmer Vernooij <jelmer@samba.org>
+Status: Not forwarded upstream
+Description: Provide public symbol tdb_logging_function removed upstream without major version change. (bug #511011)
 
-diff -ur tdb-1.2.2/common/open.c tdb-1.2.2-fixed/common/open.c
---- tdb-1.2.2/common/open.c	2010-05-06 01:33:26.000000000 +0200
-+++ tdb-1.2.2-fixed/common/open.c	2010-05-14 16:21:45.461268209 +0200
-@@ -438,6 +438,11 @@
+diff -ur tdb-1.2.9/ABI/tdb-1.2.1.sigs tdb-1.2.9+git20120207.new/ABI/tdb-1.2.1.sigs
+--- tdb-1.2.9/ABI/tdb-1.2.1.sigs	2012-02-07 15:07:35.000000000 +0100
++++ tdb-1.2.9+git20120207.new/ABI/tdb-1.2.1.sigs	2012-02-07 15:23:51.000000000 +0100
+@@ -48,6 +48,7 @@
+ tdb_lockall_read_nonblock: int (struct tdb_context *)
+ tdb_lockall_unmark: int (struct tdb_context *)
+ tdb_log_fn: tdb_log_func (struct tdb_context *)
++tdb_logging_function: void tdb_logging_function(struct tdb_context *, tdb_log_func)
+ tdb_map_size: size_t (struct tdb_context *)
+ tdb_mmap: void (struct tdb_context *)
+ tdb_munmap: int (struct tdb_context *)
+diff -ur tdb-1.2.9/common/open.c tdb-1.2.9+git20120207.new/common/open.c
+--- tdb-1.2.9/common/open.c	2012-02-07 15:07:35.000000000 +0100
++++ tdb-1.2.9+git20120207.new/common/open.c	2012-02-07 15:23:51.000000000 +0100
+@@ -539,6 +539,11 @@
          tdb->log = *log_ctx;
  }
  
@@ -16,26 +28,16 @@ diff -ur tdb-1.2.2/common/open.c tdb-1.2.2-fixed/common/open.c
  _PUBLIC_ void *tdb_get_logging_private(struct tdb_context *tdb)
  {
  	return tdb->log.log_private;
-diff -ur tdb-1.2.2/include/tdb.h tdb-1.2.2-fixed/include/tdb.h
---- tdb-1.2.2/include/tdb.h	2010-05-06 01:33:26.000000000 +0200
-+++ tdb-1.2.2-fixed/include/tdb.h	2010-05-14 16:22:05.654686898 +0200
-@@ -100,6 +100,7 @@
- 
- int tdb_reopen(struct tdb_context *tdb);
+diff -ur tdb-1.2.9/include/tdb.h tdb-1.2.9+git20120207.new/include/tdb.h
+--- tdb-1.2.9/include/tdb.h	2012-02-07 15:07:35.000000000 +0100
++++ tdb-1.2.9+git20120207.new/include/tdb.h	2012-02-07 15:24:06.000000000 +0100
+@@ -233,6 +233,9 @@
+  */
  int tdb_reopen_all(int parent_longlived);
+ 
++
 +__attribute__((deprecated)) void tdb_logging_function(struct tdb_context *tdb, tdb_log_func);
- void tdb_set_logging_function(struct tdb_context *tdb, const struct tdb_logging_context *log_ctx);
- enum TDB_ERROR tdb_error(struct tdb_context *tdb);
- const char *tdb_errorstr(struct tdb_context *tdb);
-=== modified file 'lib/tdb/ABI/tdb-1.2.1.sigs'
---- tdb/ABI/tdb-1.2.1.sigs	2010-04-18 05:39:59 +0000
-+++ tdb/ABI/tdb-1.2.1.sigs	2010-12-21 18:15:57 +0000
-@@ -48,6 +48,7 @@
- tdb_lockall_read_nonblock: int (struct tdb_context *)
- tdb_lockall_unmark: int (struct tdb_context *)
- tdb_log_fn: tdb_log_func (struct tdb_context *)
-+tdb_logging_function: void tdb_logging_function(struct tdb_context *, tdb_log_func)
- tdb_map_size: size_t (struct tdb_context *)
- tdb_mmap: void (struct tdb_context *)
- tdb_munmap: int (struct tdb_context *)
-
++
+ /**
+  * @brief Set a different tdb logging function.
+  *
