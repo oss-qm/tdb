@@ -1,3 +1,12 @@
+tdb (1.2.9+git20120207-1) unstable; urgency=low
+
+  * New upstream snapshot.
+   + Unpacks waf sourcecode. Closes: #654509
+   + Fixes build issues when IOV_MAX is not available, as is
+     the case on Hurd systems. Closes: #657021
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Tue, 07 Feb 2012 14:38:34 +0100
+
 tdb (1.2.9-4) unstable; urgency=low
 
   * Explicitly use dh_python2.
