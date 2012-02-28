@@ -1,15 +1,15 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: tdb
 Upstream-Contact: Rusty Russell <rusty@samba.org>
 Source: http://tdb.samba.org/
 
-This package was debianized by Marek Habersack <grendel@debian.org> on
-Mon,  7 May 2001 18:03:17 +0200 and subsequently updated heavily
-by Jelmer Vernooij <jelmer@debian.org>.
-
-The tarball was extracted from Git using the script in
-./debian/build-orig.sh
-
-Upstream Author: Andrew Tridgell <tridge@samba.org>
+Files: debian/*
+Copyright: 2001-2005 Marek Habersack <grendel@debian.org> on
+Copyright: 2007-2012 Jelmer Vernooij <jelmer@samba.org>
+License: LGPL-3+
+ Libreplace is licensed under the GNU Lesser General Public License,
+ version 3 or later. The text of the license is available on Debian
+ systems in the /usr/share/common-licenses/LGPL-3 file.
 
 Files: libreplace/inet_ntop.c libreplace/inet_pton.c
 Copyright: Internet Software Consortium. 1996-2001
