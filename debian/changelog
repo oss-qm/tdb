@@ -1,8 +1,9 @@
 tdb (1.2.9+git20120207-3) UNRELEASED; urgency=low
 
   * debian/rules: Remove unnecessary clean: target.
+  * Properly clean up after building.
 
- -- Jelmer Vernooij <jelmer@debian.org>  Thu, 05 Apr 2012 01:34:21 +0200
+ -- Jelmer Vernooij <jelmer@debian.org>  Tue, 10 Apr 2012 20:15:06 +0200
 
 tdb (1.2.9+git20120207-2) unstable; urgency=low
 
