@@ -1,4 +1,5 @@
 libtdb.so.1 libtdb1 #MINVER#
+ TDB_1.2.10@TDB_1.2.10 1.2.10-1
  TDB_1.2.1@TDB_1.2.1 1.2.7+git20101215
  TDB_1.2.2@TDB_1.2.2 1.2.7+git20101215
  TDB_1.2.3@TDB_1.2.3 1.2.9+git20120207
@@ -35,6 +36,7 @@ libtdb.so.1 libtdb1 #MINVER#
  tdb_hash_size@TDB_1.2.1 1.2.7+git20101214
  tdb_increment_seqnum_nonblock@TDB_1.2.1 1.2.7+git20101214
  tdb_jenkins_hash@TDB_1.2.5 1.2.7+git20101214
+ tdb_lock_nonblock@TDB_1.2.1 1.2.10-1
  tdb_lockall@TDB_1.2.1 1.2.7+git20101214
  tdb_lockall_mark@TDB_1.2.1 1.2.7+git20101214
  tdb_lockall_nonblock@TDB_1.2.1 1.2.7+git20101214
@@ -65,8 +67,11 @@ libtdb.so.1 libtdb1 #MINVER#
  tdb_transaction_prepare_commit@TDB_1.2.1 1.2.7+git20101214
  tdb_transaction_start@TDB_1.2.1 1.2.7+git20101214
  tdb_transaction_start_nonblock@TDB_1.2.1 1.2.7+git20101214
+ tdb_transaction_write_lock_mark@TDB_1.2.10 1.2.10-1
+ tdb_transaction_write_lock_unmark@TDB_1.2.10 1.2.10-1
  tdb_traverse@TDB_1.2.1 1.2.7+git20101214
  tdb_traverse_read@TDB_1.2.1 1.2.7+git20101214
+ tdb_unlock@TDB_1.2.1 1.2.10-1
  tdb_unlockall@TDB_1.2.1 1.2.7+git20101214
  tdb_unlockall_read@TDB_1.2.1 1.2.7+git20101214
  tdb_validate_freelist@TDB_1.2.1 1.2.7+git20101214

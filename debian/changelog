@@ -1,4 +1,4 @@
-tdb (1.2.10-1) UNRELEASED; urgency=low
+tdb (1.2.10-1) unstable; urgency=low
 
   * debian/rules: Remove unnecessary clean: target.
   * Properly clean up after building.
