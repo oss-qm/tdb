@@ -1,3 +1,9 @@
+tdb (1.2.10-1.1) unstable; urgency=high
+
+  * Fix version in symbols file to make lintian happy.
+
+ -- Ivo De Decker <ivo.dedecker@ugent.be>  Sun, 27 May 2012 12:55:11 +0200
+
 tdb (1.2.10-1) unstable; urgency=low
 
   * debian/rules: Remove unnecessary clean: target.
