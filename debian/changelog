@@ -1,4 +1,4 @@
-tdb (1.2.10-2) UNRELEASED; urgency=high
+tdb (1.2.10-2) unstable; urgency=high
 
   [ Ivo De Decker ]
   * Make transaction-expand test non-fatal. Fixes FTBFS. Closes: #674749
