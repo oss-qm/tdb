@@ -1,5 +1,10 @@
-tdb (1.2.11-3) UNRELEASED; urgency=low
+tdb (1.2.12-1) UNRELEASED; urgency=low
 
+  [ Andrew Bartlett ]
+  * New upstream release.
+   + Drop 08_waf_python_config integrated upstream.
+
+  [ Jelmer Vernooij ]
   * Migrate to Git.
   * Bump standards version to 3.9.4.
   * Fix duplicate line in copyright file.
