@@ -3,6 +3,7 @@ tdb (1.2.12-1) UNRELEASED; urgency=low
   [ Andrew Bartlett ]
   * New upstream release.
    + Drop 08_waf_python_config integrated upstream.
+   + Fixes two FTBFS bugs. Closes: #710342, #713098
 
   [ Jelmer Vernooij ]
   * Migrate to Git.
