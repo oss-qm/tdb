@@ -1,6 +1,7 @@
 tdb (1.2.11-3) UNRELEASED; urgency=low
 
   * Migrate to Git.
+  * Bump standards version to 3.9.4.
 
  -- Jelmer Vernooij <jelmer@debian.org>  Mon, 05 Nov 2012 23:16:09 +0100
 
