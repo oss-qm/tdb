@@ -1,3 +1,13 @@
+tdb (1.2.11-2.1) experimental; urgency=low
+
+  * Non-maintainer upload with maintainer's agreement.
+  * New upstream release.
+   + Add 08_waf_python_config to cope with python-config no longer
+     being a script.
+   + Adapt 40_test_transaction_expand_non_fatal.diff after conflicts
+
+ -- Andrew Bartlett <abartlet@samba.org>  Tue, 12 Feb 2013 20:43:55 +1100
+
 tdb (1.2.10-2) unstable; urgency=high
 
   [ Ivo De Decker ]

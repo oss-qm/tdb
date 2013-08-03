@@ -12,11 +12,11 @@ Last-Update: 2012-05-28
              if ret != 0:
                  print("%s failed:" % f)
                  samba_utils.RUN_COMMAND("cat " + os.path.join(testdir, 'test-output'))
--                ecode = ret;
--                break;
+-                ecode = ret
+-                break
 +                if f != 'tdb1-run-transaction-expand':
-+                    ecode = ret;
-+                    break;
++                    ecode = ret
++                    break
  
      if ecode == 0:
          cmd = os.path.join(Utils.g_module.blddir, 'tdbtorture')

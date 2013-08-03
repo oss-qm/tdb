@@ -10,7 +10,7 @@ Build-Depends: debhelper (>= 8.1.3),
                xsltproc
 Homepage: http://tdb.samba.org/
 Standards-Version: 3.9.3
-Vcs-Bzr: http://bzr.debian.org/pkg-samba/tdb/unstable
+Vcs-Git: git://git.debian.org/pkg-samba/tdb.git
 
 Package: libtdb1
 Pre-Depends: ${misc:Pre-Depends}
