@@ -1,4 +1,4 @@
-tdb (1.2.12-1) UNRELEASED; urgency=low
+tdb (1.2.12-1) unstable; urgency=low
 
   [ Andrew Bartlett ]
   * New upstream release.
@@ -11,7 +11,7 @@ tdb (1.2.12-1) UNRELEASED; urgency=low
   * Fix duplicate line in copyright file.
   * Use dpkg-buildflags, enabling hardening.
 
- -- Jelmer Vernooij <jelmer@debian.org>  Mon, 05 Nov 2012 23:16:09 +0100
+ -- Jelmer Vernooij <jelmer@debian.org>  Sun, 11 Aug 2013 13:37:12 +0000
 
 tdb (1.2.11-2.1) experimental; urgency=low
 
