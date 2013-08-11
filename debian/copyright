@@ -4,8 +4,9 @@ Upstream-Contact: Rusty Russell <rusty@samba.org>
 Source: http://tdb.samba.org/
 
 Files: debian/*
-Copyright: 2001-2005 Marek Habersack <grendel@debian.org> on
-Copyright: 2007-2012 Jelmer Vernooij <jelmer@samba.org>
+Copyright:
+  2001-2005 Marek Habersack <grendel@debian.org> on
+  2007-2012 Jelmer Vernooij <jelmer@samba.org>
 License: LGPL-3+
  Debian packaging is licensed under the GNU Lesser General Public License,
  version 3 or later. The text of the license is available on Debian
