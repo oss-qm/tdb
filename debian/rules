@@ -1,15 +1,12 @@
 #!/usr/bin/make -f
 
-CFLAGS = -g -Wall
-SHLD_FLAGS = -shared -Wl,--as-needed
+CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
+LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-CFLAGS += -O0
-else
-CFLAGS += -O2
-endif
-
-LDFLAGS += -Wl,--as-needed
+CFLAGS += -g -Wall
+SHLD_FLAGS += -shared -Wl,--as-needed
 
 DESTDIR=$(CURDIR)/debian/tmp
 export PYTHON=$(shell which `pyversions -d`)
@@ -21,7 +18,8 @@ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 	dh $* --with python2
 
 override_dh_auto_configure:
-	PYTHON="$(PYTHON)" PYTHON_CONFIG="$(PYTHON_CONFIG)" CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --disable-rpath-install --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
+	PYTHON="$(PYTHON)" PYTHON_CONFIG="$(PYTHON_CONFIG)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" \
+		   ./configure --prefix=/usr --disable-rpath-install --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
 
 get-packaged-orig-source:
 	./debian/build-orig.sh
