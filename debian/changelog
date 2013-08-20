@@ -1,3 +1,9 @@
+tdb (1.2.12-2) UNRELEASED; urgency=low
+
+  * Add basic autopkgtest for running python tests.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Tue, 20 Aug 2013 01:04:01 +0000
+
 tdb (1.2.12-1) unstable; urgency=low
 
   [ Andrew Bartlett ]
