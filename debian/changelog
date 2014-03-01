@@ -2,6 +2,7 @@ tdb (1.2.12-2) UNRELEASED; urgency=low
 
   * Add basic autopkgtest for running python tests.
   * Change maintainer to Samba Debian maintainers, move myself to uploaders.
+  * Bump standards version to 3.9.5 (no changes).
 
  -- Jelmer Vernooij <jelmer@debian.org>  Tue, 20 Aug 2013 01:04:01 +0000
 
