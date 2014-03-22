@@ -6,7 +6,7 @@ CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
 LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 
 CFLAGS += -g -Wall
-SHLD_FLAGS += -shared -Wl,--as-needed
+LDFLAGS += -Wl,--as-needed
 
 DESTDIR=$(CURDIR)/debian/tmp
 export PYTHON=$(shell which `pyversions -d`)
@@ -28,7 +28,7 @@ override_dh_python2:
 	dh_python2 --no-guessing-versions
 
 override_dh_auto_build:
-	$(MAKE) all SHLD_FLAGS="$(SHLD_FLAGS)"
+	$(MAKE) all
 
 override_dh_auto_test:
 ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
