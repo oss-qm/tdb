@@ -1,4 +1,4 @@
-tdb (1.2.13-1) UNRELEASED; urgency=low
+tdb (1.2.13-1) unstable; urgency=low
 
   * New upstream release.
   * Add basic autopkgtest for running python tests.
