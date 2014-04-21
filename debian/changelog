@@ -1,4 +1,4 @@
-tdb (1.2.13-2) UNRELEASED; urgency=medium
+tdb (1.2.13-2) unstable; urgency=medium
 
   * Allow output on standard error from python testsuite.
 
