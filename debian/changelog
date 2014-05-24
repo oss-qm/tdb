@@ -1,3 +1,10 @@
+tdb (1.2.13-3) UNRELEASED; urgency=medium
+
+  * Only build on linux-any and kfreebsd-any, since the Hurd does not
+    yet support byte range locking (bug #190367).
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Sat, 24 May 2014 03:51:19 +0200
+
 tdb (1.2.13-2) unstable; urgency=medium
 
   * Allow output on standard error from python testsuite.
