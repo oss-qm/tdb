@@ -1,4 +1,4 @@
-tdb (1.2.13-3) UNRELEASED; urgency=medium
+tdb (1.2.13-3) unstable; urgency=medium
 
   * Only build on linux-any and kfreebsd-any, since the Hurd does not
     yet support byte range locking (bug #190367).
