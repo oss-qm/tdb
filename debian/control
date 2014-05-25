@@ -43,7 +43,7 @@ Provides: tdb-dev
 Replaces: tdb-dev (<< 1.2.0-1)
 Conflicts: tdb-dev (<< 1.2.0-1)
 Section: libdevel
-Architecture: any
+Architecture: linux-any kfreebsd-any
 Depends: libc6-dev, libtdb1 (= ${binary:Version}), ${misc:Depends}
 Description: Trivial Database - development files
  This is a simple database API. It is modelled after the structure

@@ -1,3 +1,9 @@
+tdb (1.2.13-4) UNRELEASED; urgency=medium
+
+  * Fix libtdb-dev architecture to not build on hurd.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Sun, 25 May 2014 16:54:35 +0200
+
 tdb (1.2.13-3) unstable; urgency=medium
 
   * Only build on linux-any and kfreebsd-any, since the Hurd does not
