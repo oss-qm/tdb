@@ -1,7 +1,7 @@
-tdb (1.2.13-4) UNRELEASED; urgency=medium
+tdb (1.2.13-4) unstable; urgency=medium
 
   * Fix libtdb-dev architecture to not build on hurd.
-  * Stop autopkgtest for depending on build.
+  * Stop autopkgtest depending on build.
 
  -- Jelmer Vernooij <jelmer@debian.org>  Sun, 25 May 2014 16:54:35 +0200
 
