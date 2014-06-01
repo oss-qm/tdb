@@ -36,6 +36,7 @@ char *line;
 TDB_DATA iterate_kbuf;
 char cmdline[1024];
 static int disable_mmap;
+static int disable_lock;
 
 enum commands {
 	CMD_CREATE_TDB,
@@ -115,6 +116,33 @@ static double _end_timer(void)
 	gettimeofday(&tp2,NULL);
 	return((tp2.tv_sec - tp1.tv_sec) +
 	       (tp2.tv_usec - tp1.tv_usec)*1.0e-6);
+}
+
+#ifdef PRINTF_ATTRIBUTE
+static void tdb_log_open(struct tdb_context *tdb, enum tdb_debug_level level,
+			 const char *format, ...) PRINTF_ATTRIBUTE(3,4);
+#endif
+static void tdb_log_open(struct tdb_context *tdb, enum tdb_debug_level level,
+			 const char *format, ...)
+{
+	const char *mutex_msg =
+		"Can use mutexes only with MUTEX_LOCKING or NOLOCK\n";
+	char *p;
+	va_list ap;
+
+	p = strstr(format, mutex_msg);
+	if (p != NULL) {
+		/*
+		 * Yes, this is a hack, but we don't want to see this
+		 * message on first open, but we want to see
+		 * everything else.
+		 */
+		return;
+	}
+
+	va_start(ap, format);
+	vfprintf(stderr, format, ap);
+	va_end(ap);
 }
 
 #ifdef PRINTF_ATTRIBUTE
@@ -222,11 +250,14 @@ static void terror(const char *why)
 
 static void create_tdb(const char *tdbname)
 {
-	struct tdb_logging_context log_ctx;
+	struct tdb_logging_context log_ctx = { NULL, NULL};
 	log_ctx.log_fn = tdb_log;
 
 	if (tdb) tdb_close(tdb);
-	tdb = tdb_open_ex(tdbname, 0, TDB_CLEAR_IF_FIRST | (disable_mmap?TDB_NOMMAP:0),
+	tdb = tdb_open_ex(tdbname, 0,
+			  TDB_CLEAR_IF_FIRST |
+			  (disable_mmap?TDB_NOMMAP:0) |
+			  (disable_lock?TDB_NOLOCK:0),
 			  O_RDWR | O_CREAT | O_TRUNC, 0600, &log_ctx, NULL);
 	if (!tdb) {
 		printf("Could not create %s: %s\n", tdbname, strerror(errno));
@@ -235,12 +266,32 @@ static void create_tdb(const char *tdbname)
 
 static void open_tdb(const char *tdbname)
 {
-	struct tdb_logging_context log_ctx;
-	log_ctx.log_fn = tdb_log;
+	struct tdb_logging_context log_ctx = { NULL, NULL };
+	log_ctx.log_fn = tdb_log_open;
 
 	if (tdb) tdb_close(tdb);
-	tdb = tdb_open_ex(tdbname, 0, disable_mmap?TDB_NOMMAP:0, O_RDWR, 0600,
+	tdb = tdb_open_ex(tdbname, 0,
+			  (disable_mmap?TDB_NOMMAP:0) |
+			  (disable_lock?TDB_NOLOCK:0),
+			  O_RDWR, 0600,
 			  &log_ctx, NULL);
+
+	log_ctx.log_fn = tdb_log;
+	if (tdb != NULL) {
+		tdb_set_logging_function(tdb, &log_ctx);
+	}
+
+	if ((tdb == NULL) && (errno == EINVAL)) {
+		/*
+		 * Retry NOLOCK and readonly. There we want to see all
+		 * error messages.
+		 */
+		tdb = tdb_open_ex(tdbname, 0,
+				  (disable_mmap?TDB_NOMMAP:0) |TDB_NOLOCK,
+				  O_RDONLY, 0600,
+				  &log_ctx, NULL);
+	}
+
 	if (!tdb) {
 		printf("Could not open %s: %s\n", tdbname, strerror(errno));
 	}
@@ -735,6 +786,13 @@ int main(int argc, char *argv[])
 	arg1len = 0;
 	arg2 = NULL;
 	arg2len = 0;
+
+	if (argv[1] && (strcmp(argv[1], "-l") == 0)) {
+		disable_lock = 1;
+		argv[1] = argv[0];
+		argv += 1;
+		argc -= 1;
+	}
 
 	if (argv[1]) {
 		cmdname = "open";

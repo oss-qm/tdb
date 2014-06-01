@@ -130,6 +130,7 @@ def SAMBA_LIBRARY(bld, libname, source,
                   private_library=False,
                   grouping_library=False,
                   allow_undefined_symbols=False,
+                  allow_warnings=True,
                   enabled=True):
     '''define a Samba library'''
 
@@ -176,6 +177,7 @@ def SAMBA_LIBRARY(bld, libname, source,
                         autoproto_extra_source=autoproto_extra_source,
                         depends_on     = depends_on,
                         hide_symbols   = hide_symbols,
+                        allow_warnings = allow_warnings,
                         pyembed        = pyembed,
                         pyext          = pyext,
                         local_include  = local_include,
@@ -348,6 +350,8 @@ def SAMBA_BINARY(bld, binname, source,
     if bld.env['ENABLE_PIE'] == True:
         pie_cflags += ' -fPIE'
         pie_ldflags.extend(TO_LIST('-pie'))
+    if bld.env['ENABLE_RELRO'] == True:
+        pie_ldflags.extend(TO_LIST('-Wl,-z,relro,-z,now'))
 
     # first create a target for building the object files for this binary
     # by separating in this way, we avoid recompiling the C files
@@ -413,7 +417,8 @@ def SAMBA_MODULE(bld, modname, source,
                  enabled=True,
                  pyembed=False,
                  manpages=None,
-                 allow_undefined_symbols=False
+                 allow_undefined_symbols=False,
+                 allow_warnings=True
                  ):
     '''define a Samba module.'''
 
@@ -433,6 +438,7 @@ def SAMBA_MODULE(bld, modname, source,
                     cflags=cflags,
                     local_include=local_include,
                     global_include=global_include,
+                    allow_warnings=allow_warnings,
                     enabled=enabled)
 
         bld.ADD_INIT_FUNCTION(subsystem, modname, init_function)
@@ -479,7 +485,8 @@ def SAMBA_MODULE(bld, modname, source,
                       install_path="${MODULESDIR}/%s" % subsystem,
                       pyembed=pyembed,
                       manpages=manpages,
-                      allow_undefined_symbols=allow_undefined_symbols
+                      allow_undefined_symbols=allow_undefined_symbols,
+                      allow_warnings=allow_warnings
                       )
 
 
@@ -511,6 +518,7 @@ def SAMBA_SUBSYSTEM(bld, modname, source,
                     vars=None,
                     subdir=None,
                     hide_symbols=False,
+                    allow_warnings=True,
                     pyext=False,
                     pyembed=False):
     '''define a Samba subsystem'''
@@ -546,7 +554,9 @@ def SAMBA_SUBSYSTEM(bld, modname, source,
         features       = features,
         source         = source,
         target         = modname,
-        samba_cflags   = CURRENT_CFLAGS(bld, modname, cflags, hide_symbols=hide_symbols),
+        samba_cflags   = CURRENT_CFLAGS(bld, modname, cflags,
+                                        allow_warnings=allow_warnings,
+                                        hide_symbols=hide_symbols),
         depends_on     = depends_on,
         samba_deps     = TO_LIST(deps),
         samba_includes = includes,
@@ -804,7 +814,7 @@ def MANPAGES(bld, manpages, install):
             bld.INSTALL_FILES('${MANDIR}/man%s' % m[-1], m, flat=True)
 Build.BuildContext.MANPAGES = MANPAGES
 
-def SAMBAMANPAGES(bld, manpages):
+def SAMBAMANPAGES(bld, manpages, extra_source=None):
     '''build and install manual pages'''
     bld.env.SAMBA_EXPAND_XSL = bld.srcnode.abspath() + '/docs-xml/xslt/expand-sambadoc.xsl'
     bld.env.SAMBA_MAN_XSL = bld.srcnode.abspath() + '/docs-xml/xslt/man.xsl'
@@ -812,13 +822,15 @@ def SAMBAMANPAGES(bld, manpages):
 
     for m in manpages.split():
         source = m + '.xml'
+        if extra_source is not None:
+            source = [source, extra_source]
         bld.SAMBA_GENERATOR(m,
                             source=source,
                             target=m,
                             group='final',
                             rule='''XML_CATALOG_FILES="${SAMBA_CATALOGS}"
                                     export XML_CATALOG_FILES
-                                    ${XSLTPROC} --xinclude --stringparam noreference 0 -o ${TGT}.xml --nonet ${SAMBA_EXPAND_XSL} ${SRC}
+                                    ${XSLTPROC} --xinclude --stringparam noreference 0 -o ${TGT}.xml --nonet ${SAMBA_EXPAND_XSL} ${SRC[0].abspath(env)}
                                     ${XSLTPROC} --nonet -o ${TGT} ${SAMBA_MAN_XSL} ${TGT}.xml'''
                             )
         bld.INSTALL_FILES('${MANDIR}/man%s' % m[-1], m, flat=True)
