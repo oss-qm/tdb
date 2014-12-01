@@ -1,3 +1,2 @@
-missing-stdbool-include.patch
 30_tdb_logging_func.diff
 40_test_transaction_expand_non_fatal.diff
