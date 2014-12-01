@@ -1,6 +1,8 @@
 tdb (1.3.2-1) UNRELEASED; urgency=medium
 
   * New upstream release.
+   + Fixes __attribute__((visibility)) check to not use nested functions.
+     Closes: #749986
   * Drop missing-stdbool-include.patch; now included upstream.
 
  -- Jelmer Vernooij <jelmer@debian.org>  Mon, 01 Dec 2014 21:44:24 +0000
