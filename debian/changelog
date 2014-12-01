@@ -7,6 +7,7 @@ tdb (1.3.2-1) UNRELEASED; urgency=medium
   * Update 40_test_transaction_expand_non_fatal.diff: Ignore tdb1-run-
     mutex-openflags2 test output, since newly added test fails on
     Debian.
+  * Bump standards version to 3.9.6 (no changes).
 
  -- Jelmer Vernooij <jelmer@debian.org>  Mon, 01 Dec 2014 21:44:24 +0000
 
