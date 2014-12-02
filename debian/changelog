@@ -1,3 +1,13 @@
+tdb (1.3.3-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+  * Update 40_test_transaction_expand_non_fatal.diff: Remove
+    ignoring of tdb1-run-mutex-openflags2 test output,
+    as the test was fixed upstream.
+
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Tue, 02 Dec 2014 21:03:18 +0000
+
 tdb (1.3.2-1) unstable; urgency=medium
 
   * New upstream release.
