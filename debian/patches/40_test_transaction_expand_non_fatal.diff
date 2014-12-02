@@ -14,7 +14,7 @@ Last-Update: 2012-05-28
                  samba_utils.RUN_COMMAND("cat " + os.path.join(testdir, 'test-output'))
 -                ecode = ret
 -                break
-+                if f != 'tdb1-run-transaction-expand' and f != 'tdb1-run-mutex-openflags2':
++                if f != 'tdb1-run-transaction-expand':
 +                    ecode = ret
 +                    break
  
