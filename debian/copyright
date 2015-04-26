@@ -12,7 +12,7 @@ License: LGPL-3+
  version 3 or later. The text of the license is available on Debian
  systems in the /usr/share/common-licenses/LGPL-3 file.
 
-Files: libreplace/inet_ntop.c libreplace/inet_pton.c
+Files: lib/replace/inet_ntop.c lib/replace/inet_pton.c
 Copyright: Internet Software Consortium. 1996-2001
 License: ISC
  Permission to use, copy, modify, and distribute this software for any
@@ -28,7 +28,7 @@ License: ISC
  NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION
  WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-Files: libreplace/*.c
+Files: lib/replace/*.c
 Copyright:
   Copyright (c) Andrew Tridgell                1999-2006
   Copyright (c) Jeremy Allison	               2000-2003,2007
@@ -76,7 +76,7 @@ License:
   of the license is available on Debian systems in the
   /usr/share/common-licenses/LGPL-3 file.
 
-Files: libreplace/timegm.c
+Files: lib/replace/timegm.c
 Copyright:
   Copyright (c) Kungliga Tekniska Högskolan    1997
 License:
