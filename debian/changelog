@@ -2,6 +2,7 @@ tdb (1.3.4-3) UNRELEASED; urgency=medium
 
   * debian/rules: Pass CPPFLAGS from dpkg-buildflags onto configure,
     enabling hardening.
+  * Make libtdb2-dbg Multi-Arch: same.
 
  -- Jelmer Vernooij <jelmer@debian.org>  Sun, 26 Apr 2015 10:56:55 +0000
 

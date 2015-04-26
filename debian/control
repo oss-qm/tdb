@@ -54,6 +54,7 @@ Description: Trivial Database - development files
  This package contains the development files.
 
 Package: libtdb1-dbg
+Multi-Arch: same
 Section: debug
 Architecture: linux-any kfreebsd-any
 Priority: extra
