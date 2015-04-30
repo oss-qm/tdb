@@ -272,6 +272,7 @@ static int test_strndup(void)
 	x = strndup("bla", 10);
 	if (strcmp(x, "bla") != 0) {
 		printf("failure: strndup [\ninvalid\n]\n");
+		free(x);
 		return false;
 	}
 	free(x);
@@ -887,6 +888,7 @@ static int test_utime(void)
 		printf("failure: utime [\n"
 		       "fstat (1) failed - %s\n]\n",
 		       strerror(errno));
+		close(fd);
 		return false;
 	}
 
@@ -896,6 +898,7 @@ static int test_utime(void)
 		printf("failure: utime [\n"
 		       "utime(&u) failed - %s\n]\n",
 		       strerror(errno));
+		close(fd);
 		return false;
 	}
 
@@ -903,6 +906,7 @@ static int test_utime(void)
 		printf("failure: utime [\n"
 		       "fstat (2) failed - %s\n]\n",
 		       strerror(errno));
+		close(fd);
 		return false;
 	}
 
@@ -910,6 +914,7 @@ static int test_utime(void)
 		printf("failure: utime [\n"
 		       "utime(NULL) failed - %s\n]\n",
 		       strerror(errno));
+		close(fd);
 		return false;
 	}
 
@@ -917,6 +922,7 @@ static int test_utime(void)
 		printf("failure: utime [\n"
 		       "fstat (3) failed - %s\n]\n",
 		       strerror(errno));
+		close(fd);
 		return false;
 	}
 
@@ -926,6 +932,7 @@ static int test_utime(void)
 		       "%s: %s(%d) %s %s(%d)\n]\n", \
 		       __location__, \
 		       #a, (int)a, #c, #b, (int)b); \
+		close(fd); \
 		return false; \
 	} \
 } while(0)
@@ -945,6 +952,7 @@ static int test_utime(void)
 
 	unlink(TESTFILE);
 	printf("success: utime\n");
+	close(fd);
 	return true;
 }
 
@@ -969,6 +977,7 @@ static int test_utimes(void)
 		printf("failure: utimes [\n"
 		       "fstat (1) failed - %s\n]\n",
 		       strerror(errno));
+		close(fd);
 		return false;
 	}
 
@@ -979,6 +988,7 @@ static int test_utimes(void)
 		printf("failure: utimes [\n"
 		       "utimes(tv) failed - %s\n]\n",
 		       strerror(errno));
+		close(fd);
 		return false;
 	}
 
@@ -986,6 +996,7 @@ static int test_utimes(void)
 		printf("failure: utimes [\n"
 		       "fstat (2) failed - %s\n]\n",
 		       strerror(errno));
+		close(fd);
 		return false;
 	}
 
@@ -995,6 +1006,7 @@ static int test_utimes(void)
 		       "%s: %s(%d) != %s(%d)\n]\n", \
 		       __location__, \
 		       #a, (int)a, #b, (int)b); \
+		close(fd); \
 		return false; \
 	} \
 } while(0)
@@ -1006,6 +1018,7 @@ static int test_utimes(void)
 
 	unlink(TESTFILE);
 	printf("success: utimes\n");
+	close(fd);
 	return true;
 }
 
