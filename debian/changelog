@@ -1,6 +1,7 @@
 tdb (1.3.7-1) UNRELEASED; urgency=medium
 
   * New upstream release.
+  * debian/copyright: Fix license name uniqueness.
 
  -- Jelmer Vernooij <jelmer@debian.org>  Sat, 19 Sep 2015 02:57:15 +0000
 
