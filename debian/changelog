@@ -1,3 +1,9 @@
+tdb (1.3.8-2) UNRELEASED; urgency=medium
+
+  * Drop '-b unstable' flag to Vcs-Git.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Sun, 13 Dec 2015 16:10:29 +0000
+
 tdb (1.3.8-1) unstable; urgency=medium
 
   * New upstream release.
