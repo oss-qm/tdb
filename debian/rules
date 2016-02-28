@@ -10,16 +10,19 @@ LDFLAGS += -Wl,--as-needed
 
 DESTDIR=$(CURDIR)/debian/tmp
 export PYTHON=$(shell which `pyversions -d`)
-export PYTHON_CONFIG=$(PYTHON)-config
 
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
 %:
-	dh $* --with python2
+	dh $* --with python2,python3
 
 override_dh_auto_configure:
-	CPPFLAGS="$(CPPFLAGS)" PYTHON="$(PYTHON)" PYTHON_CONFIG="$(PYTHON_CONFIG)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" \
-		   ./configure --prefix=/usr --disable-rpath-install --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
+	PYTHON="$(PYTHON)" \
+	CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" \
+		./configure --prefix=/usr --disable-rpath-install \
+		--libdir=/usr/lib/$(DEB_HOST_MULTIARCH) \
+		--extra-python=python3 \
+		-v
 
 get-packaged-orig-source:
 	./debian/build-orig.sh
@@ -28,7 +31,7 @@ override_dh_python2:
 	dh_python2 --no-guessing-versions
 
 override_dh_auto_build:
-	$(MAKE) all
+	$(MAKE) all V=2
 
 override_dh_auto_test:
 ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
@@ -47,6 +50,9 @@ override_dh_auto_clean:
 		  third_party/waf/wafadmin/*.pyc \
 		  third_party/waf/wafadmin/Tools/*.pyc
 
+override_dh_install:
+	dh_install --list-missing
+
 override_dh_auto_install:
 	$(MAKE) install DESTDIR=$(DESTDIR)
 	# Waf should be doing this..
@@ -60,7 +66,8 @@ override_dh_auto_install:
 override_dh_strip:
 	dh_strip -p libtdb1 --dbg-package=libtdb1-dbg
 	dh_strip -p python-tdb --dbg-package=python-tdb-dbg
+	dh_strip -p python3-tdb --dbg-package=python3-tdb-dbg
 	dh_strip -p tdb-tools
 
 override_dh_makeshlibs:
-	dh_makeshlibs -- -c4
+	dh_makeshlibs -Npython-tdb -Npython3-tdb -- -c4
