@@ -6,6 +6,9 @@ tdb (1.3.8-2) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * Build Python3 bindings. Closes: #815141
 
+  [ Jelmer Vernooij ]
+  * Bump standards version to 3.9.7 (no changes).
+
  -- Jelmer Vernooij <jelmer@debian.org>  Sun, 13 Dec 2015 16:10:29 +0000
 
 tdb (1.3.8-1) unstable; urgency=medium
