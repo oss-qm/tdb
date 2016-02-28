@@ -1,4 +1,4 @@
-tdb (1.3.8-2) UNRELEASED; urgency=medium
+tdb (1.3.8-2) unstable; urgency=medium
 
   [ Jelmer Vernooij ]
   * Drop '-b unstable' flag to Vcs-Git.
