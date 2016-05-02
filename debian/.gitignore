@@ -1,0 +1,14 @@
+files
+debhelper-build-stamp
+tdb-tools
+libtdb-dev
+libtdb1-dbg
+libtdb1
+python-tdb
+python-tdb-dbg
+python3-tdb
+python3-tdb-dbg
+*.debhelper.log
+*.substvars
+*.debhelper
+tmp
