@@ -825,6 +825,11 @@ _PUBLIC_ void tdb_set_logging_function(struct tdb_context *tdb,
         tdb->log = *log_ctx;
 }
 
+_PUBLIC_ void tdb_logging_function(struct tdb_context *tdb, tdb_log_func fn)
+{
+	tdb->log.log_fn = fn;
+}
+
 _PUBLIC_ void *tdb_get_logging_private(struct tdb_context *tdb)
 {
 	return tdb->log.log_private;

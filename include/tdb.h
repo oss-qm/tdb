@@ -250,6 +250,9 @@ int tdb_reopen(struct tdb_context *tdb);
  */
 int tdb_reopen_all(int parent_longlived);
 
+
+__attribute__((deprecated)) void tdb_logging_function(struct tdb_context *tdb, tdb_log_func);
+
 /**
  * @brief Set a different tdb logging function.
  *
