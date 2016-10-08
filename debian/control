@@ -12,7 +12,8 @@ Build-Depends: debhelper (>= 9),
                xsltproc
 Homepage: http://tdb.samba.org/
 Standards-Version: 3.9.7
-Vcs-Git: git://anonscm.debian.org/pkg-samba/tdb.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-samba/tdb.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-samba/tdb.git
 XS-Testsuite: autopkgtest
 
 Package: libtdb1
