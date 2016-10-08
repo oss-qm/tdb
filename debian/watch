@@ -1,2 +1,3 @@
 version=3
-http://download.samba.org/pub/tdb/ tdb-(.+).tar.gz
+opts="pgpsigurlmangle=s/tar\.gz/tar.asc/,decompress" \
+https://download.samba.org/pub/tdb/ tdb-(.+).tar.gz
