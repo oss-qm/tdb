@@ -2,7 +2,7 @@ Source: tdb
 Section: devel
 Priority: optional
 Maintainer: Debian Samba Maintainers <pkg-samba-maint@lists.alioth.debian.org>
-Uploaders: Jelmer Vernooĳ <jelmer@debian.org>
+Uploaders: Jelmer Vernooĳ <jelmer@debian.org>, Mathieu Parent <sathieu@debian.org>
 Build-Depends: debhelper (>= 9),
                dh-python,
                docbook-xml,
