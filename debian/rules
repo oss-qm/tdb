@@ -66,10 +66,7 @@ override_dh_auto_install:
 		$(DESTDIR)/usr/share/man/man8/tdbbackup.tdbtools.8
 
 override_dh_strip:
-	dh_strip -p libtdb1 --dbg-package=libtdb1-dbg
-	dh_strip -p python-tdb --dbg-package=python-tdb-dbg
-	dh_strip -p python3-tdb --dbg-package=python3-tdb-dbg
-	dh_strip -p tdb-tools
+	dh_strip --dbgsym-migration='libtdb1-dbg (<< 1.3.11-2~), python-tdb-dbg (<< 1.3.11-2~), python3-tdb-dbg (<< 1.3.11-2~)'
 
 override_dh_makeshlibs:
 	dh_makeshlibs -Npython-tdb -Npython3-tdb -- -c4

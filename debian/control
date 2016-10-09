@@ -53,20 +53,6 @@ Description: Trivial Database - development files
  .
  This package contains the development files.
 
-Package: libtdb1-dbg
-Multi-Arch: same
-Section: debug
-Architecture: linux-any kfreebsd-any
-Priority: extra
-Depends: libtdb1 (= ${binary:Version}), ${misc:Depends}
-Recommends: libc6-dbg
-Description: Trivial Database - debug symbols
- This is a simple database API. It is modelled after the structure
- of GDBM. TDB features, unlike GDBM, multiple writers support with
- appropriate locking and transactions.
- .
- This package contains the debug symbols.
-
 Package: python-tdb
 Section: python
 Architecture: linux-any kfreebsd-any
@@ -82,23 +68,6 @@ Description: Python bindings for TDB
  .
  This package contains the Python bindings.
 
-Package: python-tdb-dbg
-Section: debug
-Architecture: linux-any kfreebsd-any
-Priority: extra
-Depends: python-tdb (= ${binary:Version}),
-         ${misc:Depends},
-         ${python:Depends},
-         ${shlibs:Depends}
-Recommends: python-dbg, libtdb1-dbg
-Provides: ${python:Provides}
-Description: Python bindings for TDB - debug extension
- This is a simple database API. It is modelled after the structure
- of GDBM. TDB features, unlike GDBM, multiple writers support with
- appropriate locking and transactions.
- .
- This package contains the Python debug extension.
-
 Package: python3-tdb
 Section: python
 Architecture: linux-any kfreebsd-any
@@ -113,20 +82,3 @@ Description: Python3 bindings for TDB
  appropriate locking and transactions.
  .
  This package contains the Python3 bindings.
-
-Package: python3-tdb-dbg
-Section: debug
-Architecture: linux-any kfreebsd-any
-Priority: extra
-Depends: python3-tdb (= ${binary:Version}),
-         ${misc:Depends},
-         ${python3:Depends},
-         ${shlibs:Depends}
-Recommends: python3-dbg, libtdb1-dbg
-Provides: ${python3:Provides}
-Description: Python3 bindings for TDB - debug extension
- This is a simple database API. It is modelled after the structure
- of GDBM. TDB features, unlike GDBM, multiple writers support with
- appropriate locking and transactions.
- .
- This package contains the Python3 debug extension.
