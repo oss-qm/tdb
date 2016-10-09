@@ -40,6 +40,7 @@ Description: Trivial Database - bundled binaries
  This package contains bundled test and utility binaries
 
 Package: libtdb-dev
+Multi-Arch: same
 Provides: tdb-dev
 Replaces: tdb-dev (<< 1.2.0-1)
 Conflicts: tdb-dev (<< 1.2.0-1)
