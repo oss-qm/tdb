@@ -476,6 +476,10 @@ static int _tdb_transaction_start(struct tdb_context *tdb,
 		SAFE_FREE(tdb->transaction);
 		if ((lockflags & TDB_LOCK_WAIT) == 0) {
 			tdb->ecode = TDB_ERR_NOLOCK;
+		} else {
+			TDB_LOG((tdb, TDB_DEBUG_ERROR,
+				 "tdb_transaction_start: "
+				 "failed to get transaction lock\n"));
 		}
 		return -1;
 	}
@@ -982,7 +986,10 @@ static int _tdb_transaction_prepare_commit(struct tdb_context *tdb)
 
 	/* upgrade the main transaction lock region to a write lock */
 	if (tdb_allrecord_upgrade(tdb) == -1) {
-		TDB_LOG((tdb, TDB_DEBUG_ERROR, "tdb_transaction_prepare_commit: failed to upgrade hash locks\n"));
+		TDB_LOG((tdb, TDB_DEBUG_ERROR,
+			"tdb_transaction_prepare_commit: "
+			"failed to upgrade hash locks: %s\n",
+			 tdb_errorstr(tdb)));
 		_tdb_transaction_cancel(tdb);
 		return -1;
 	}
