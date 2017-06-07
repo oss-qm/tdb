@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 APPNAME = 'tdb'
-VERSION = '1.3.11'
+VERSION = '1.3.13'
 
 blddir = 'bin'
 
@@ -34,6 +34,7 @@ tdb1_unit_tests = [
     'run-readonly-check',
     'run-rescue',
     'run-rescue-find_entry',
+    'run-rdlock-upgrade',
     'run-rwlock-check',
     'run-summary',
     'run-transaction-expand',
@@ -60,10 +61,6 @@ def set_options(opt):
                    help=("Disable the use of pthread robust mutexes"),
                    action="store_true", dest='disable_tdb_mutex_locking',
                    default=False)
-    if opt.IN_LAUNCH_DIR():
-        opt.add_option('--disable-python',
-                       help=("disable the pytdb module"),
-                       action="store_true", dest='disable_python', default=False)
 
 
 def configure(conf):
@@ -82,10 +79,9 @@ def configure(conf):
                                      implied_deps='replace'):
             conf.define('USING_SYSTEM_TDB', 1)
             conf.env.building_tdb = False
-            if conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytdb', 'tdb', minversion=VERSION):
+            if not conf.env.disable_python and \
+                conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytdb', 'tdb', minversion=VERSION):
                 conf.define('USING_SYSTEM_PYTDB', 1)
-
-    conf.env.disable_python = getattr(Options.options, 'disable_python', False)
 
     if (conf.CONFIG_SET('HAVE_ROBUST_MUTEXES') and
         conf.env.building_tdb and
