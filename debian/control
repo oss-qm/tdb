@@ -42,8 +42,6 @@ Description: Trivial Database - bundled binaries
 Package: libtdb-dev
 Multi-Arch: same
 Provides: tdb-dev
-Replaces: tdb-dev (<< 1.2.0-1)
-Conflicts: tdb-dev (<< 1.2.0-1)
 Section: libdevel
 Architecture: linux-any kfreebsd-any
 Depends: libc6-dev, libtdb1 (= ${binary:Version}), ${misc:Depends}
