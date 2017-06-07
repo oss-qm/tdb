@@ -1,3 +1,11 @@
+tdb (1.3.13-1) experimental; urgency=medium
+
+  * New upstream version 1.3.13
+    -  Update symbols (no change)
+  * Remove Replaces+Conflicts: tdb-dev (<< 1.2.0-1). Wheezy has 1.2.10-2
+
+ -- Mathieu Parent <sathieu@debian.org>  Thu, 08 Jun 2017 22:42:07 +0200
+
 tdb (1.3.11-2) unstable; urgency=medium
 
   * Use automatic debug packages (-dbgsym)
