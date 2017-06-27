@@ -1,3 +1,10 @@
+tdb (1.3.13-3) UNRELEASED; urgency=medium
+
+  * Use https form of the copyright-format URL (Debian Policy 4.0.0)
+  * Standards-Version: 4.0.0
+
+ -- Mathieu Parent <sathieu@debian.org>  Tue, 27 Jun 2017 15:01:08 +0200
+
 tdb (1.3.13-2) unstable; urgency=medium
 
   * Upload to unstable
