@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 APPNAME = 'tdb'
-VERSION = '1.3.13'
+VERSION = '1.3.14'
 
 blddir = 'bin'
 
@@ -41,6 +41,7 @@ tdb1_unit_tests = [
     'run-traverse-in-transaction',
     'run-wronghash-fail',
     'run-zero-append',
+    'run-fcntl-deadlock',
     'run-marklock-deadlock',
     'run-allrecord-traverse-deadlock',
     'run-mutex-openflags2',
@@ -220,9 +221,8 @@ def testonly(ctx):
             if ret != 0:
                 print("%s failed:" % f)
                 samba_utils.RUN_COMMAND("cat " + os.path.join(testdir, 'test-output'))
-                if f != 'tdb1-run-transaction-expand':
-                    ecode = ret
-                    break
+                ecode = ret
+                break
 
     if ecode == 0:
         cmd = os.path.join(Utils.g_module.blddir, 'tdbtorture')
