@@ -12,8 +12,8 @@ Build-Depends: debhelper (>= 9),
                xsltproc
 Homepage: http://tdb.samba.org/
 Standards-Version: 4.1.1
-Vcs-Browser: https://anonscm.debian.org/cgit/pkg-samba/tdb.git
-Vcs-Git: https://anonscm.debian.org/git/pkg-samba/tdb.git
+Vcs-Browser: https://salsa.debian.org/samba-team/tdb
+Vcs-Git: https://salsa.debian.org/samba-team/tdb.git
 
 Package: libtdb1
 Pre-Depends: ${misc:Pre-Depends}
