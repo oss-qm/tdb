@@ -313,8 +313,8 @@ tdb (1.2.2~git20100507-1) experimental; urgency=low
 
   * New upstream snapshot.
   * Build with standard system python. Closes: #577435
-  * Remove `tdb_transaction_recover` symbol which was also removed upstream. 
-    This symbol was never intended to be public and would have been hard to 
+  * Remove `tdb_transaction_recover` symbol which was also removed upstream.
+    This symbol was never intended to be public and would have been hard to
     use anyway.
 
  -- Jelmer Vernooij <jelmer@debian.org>  Thu, 13 May 2010 18:42:16 +0200
@@ -346,7 +346,7 @@ tdb (1.2.0-1) unstable; urgency=low
 tdb (1.1.5-2) unstable; urgency=low
 
   * Provide a symbols file.
-  * Provide deprecated replacement of public tdb_logging_function symbol 
+  * Provide deprecated replacement of public tdb_logging_function symbol
     removed upstream without soname bump. Closes: #511011
   * Fix use of --as-needed.
   * Bump standards version to 3.8.2.
@@ -418,7 +418,7 @@ tdb (1.1.2~git20080520-1) unstable; urgency=low
 
 tdb (1.1.1~svn26294-2) unstable; urgency=low
 
-  * Add patch to clear spinlocks if set and opening a TDB in write mode. 
+  * Add patch to clear spinlocks if set and opening a TDB in write mode.
     (Closes: #425716)
   * Change tdb-dev section to libdevel.
 
@@ -518,7 +518,7 @@ tdb (1.0.6-9) unstable; urgency=high
 
 tdb (1.0.6-8) unstable; urgency=low
 
-  * Updated the sources to their versions from the samba 3.0.5 package. 
+  * Updated the sources to their versions from the samba 3.0.5 package.
     The interface is 100% backward compatible.
   * Updated the Standards Version. No changes.
   * Enabled spinlocks for architectures that are supported (x86,sparc,
@@ -576,7 +576,7 @@ tdb (1.0.6-1) unstable; urgency=medium
 tdb (1.0.3-4) unstable; urgency=low
 
   * Updated config.guess and config.sub (closes: #103348)
-  * Binaries in tdb-tools no longer are linked against the shared 
+  * Binaries in tdb-tools no longer are linked against the shared
     tdb library (closes: #102498)
 
  -- Marek Habersack <grendel@debian.org>  Wed,  4 Jul 2001 11:48:34 +0200
