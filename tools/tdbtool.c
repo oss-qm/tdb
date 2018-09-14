@@ -36,7 +36,7 @@ char *line;
 TDB_DATA iterate_kbuf;
 char cmdline[1024];
 static int disable_mmap;
-static int disable_lock;
+static int _disable_lock;
 
 enum commands {
 	CMD_CREATE_TDB,
@@ -263,7 +263,7 @@ static void create_tdb(const char *tdbname)
 	tdb = tdb_open_ex(tdbname, 0,
 			  TDB_CLEAR_IF_FIRST |
 			  (disable_mmap?TDB_NOMMAP:0) |
-			  (disable_lock?TDB_NOLOCK:0),
+			  (_disable_lock?TDB_NOLOCK:0),
 			  O_RDWR | O_CREAT | O_TRUNC, 0600, &log_ctx, NULL);
 	if (!tdb) {
 		printf("Could not create %s: %s\n", tdbname, strerror(errno));
@@ -278,7 +278,7 @@ static void open_tdb(const char *tdbname)
 	if (tdb) tdb_close(tdb);
 	tdb = tdb_open_ex(tdbname, 0,
 			  (disable_mmap?TDB_NOMMAP:0) |
-			  (disable_lock?TDB_NOLOCK:0),
+			  (_disable_lock?TDB_NOLOCK:0),
 			  O_RDWR, 0600,
 			  &log_ctx, NULL);
 
@@ -647,12 +647,6 @@ static char *tdb_getline(const char *prompt)
 	return p?thisline:NULL;
 }
 
-static int do_delete_fn(TDB_CONTEXT *the_tdb, TDB_DATA key, TDB_DATA dbuf,
-                     void *state)
-{
-    return tdb_delete(the_tdb, key);
-}
-
 static void first_record(TDB_CONTEXT *the_tdb, TDB_DATA *pkey)
 {
 	TDB_DATA dbuf;
@@ -758,7 +752,7 @@ static int do_command(void)
 			return 0;
 		case CMD_ERASE:
 			bIterate = 0;
-			tdb_traverse(tdb, do_delete_fn, NULL);
+			tdb_wipe_all(tdb);
 			return 0;
 		case CMD_DUMP:
 			bIterate = 0;
@@ -890,7 +884,7 @@ int main(int argc, char *argv[])
 	arg2len = 0;
 
 	if (argv[1] && (strcmp(argv[1], "-l") == 0)) {
-		disable_lock = 1;
+		_disable_lock = 1;
 		argv[1] = argv[0];
 		argv += 1;
 		argc -= 1;
@@ -930,10 +924,13 @@ int main(int argc, char *argv[])
 		break;
 	case 5:
 		arg2 = tdb_convert_string(argv[4],&arg2len);
+		FALL_THROUGH;
 	case 4:
 		arg1 = tdb_convert_string(argv[3],&arg1len);
+		FALL_THROUGH;
 	case 3:
 		cmdname = argv[2];
+		FALL_THROUGH;
 	default:
 		do_command();
 		break;
