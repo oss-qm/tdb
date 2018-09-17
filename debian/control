@@ -10,6 +10,7 @@ Build-Depends: debhelper (>= 11),
                python-dev (>= 2.6.6-3),
                python3-dev,
                xsltproc
+Rules-Requires-Root: no
 Homepage: http://tdb.samba.org/
 Standards-Version: 4.1.4
 Vcs-Browser: https://salsa.debian.org/samba-team/tdb
